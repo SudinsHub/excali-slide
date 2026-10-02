@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "frame": {
+    "width": 1920,
+    "height": 1080
+  },
+  "elements": [
+    {
+      "type": "frame",
+      "id": "slide-frame",
+      "name": "Visual Assets",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "children": [
+        "title",
+        "sample_image",
+        "b0_i0",
+        "b0_i1"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 120,
+      "y": 100,
+      "width": 1680,
+      "height": 80,
+      "fontSize": 64,
+      "fontFamily": 1,
+      "text": "Embedded Visuals & Diagram Assets",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    },
+    {
+      "type": "image",
+      "id": "sample_image",
+      "fileId": "",
+      "x": 160,
+      "y": 280,
+      "width": 640,
+      "height": 480,
+      "status": "saved"
+    },
+    {
+      "type": "text",
+      "id": "b0_i0",
+      "x": 880,
+      "y": 360,
+      "width": 880,
+      "height": 55,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "• Assets are stored immutably with SHA-1 content IDs",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "b0_i1",
+      "x": 880,
+      "y": 480,
+      "width": 880,
+      "height": 55,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "• Images seamlessly re-hydrate in Excalidraw canvas via local storage",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    }
+  ],
+  "asset_ids": []
+}

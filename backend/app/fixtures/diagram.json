@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "frame": {
+    "width": 1920,
+    "height": 1080
+  },
+  "elements": [
+    {
+      "type": "frame",
+      "id": "slide-frame",
+      "name": "Pipeline Diagram",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "children": [
+        "title",
+        "n_prompt",
+        "n_plan",
+        "n_compiler",
+        "n_canvas",
+        "e_prompt_plan",
+        "e_plan_compiler",
+        "e_compiler_canvas"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 120,
+      "y": 100,
+      "width": 1680,
+      "height": 80,
+      "fontSize": 64,
+      "fontFamily": 1,
+      "text": "Generation Pipeline Architecture",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "id": "n_prompt",
+      "x": 160,
+      "y": 460,
+      "width": 280,
+      "height": 150,
+      "strokeColor": "#1971c2",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "roundness": { "type": 3 },
+      "label": {
+        "text": "1. User Prompt\n& Notes",
+        "fontSize": 28,
+        "strokeColor": "#1e1e1e"
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "n_plan",
+      "x": 560,
+      "y": 460,
+      "width": 280,
+      "height": 150,
+      "strokeColor": "#f08c00",
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "roundness": { "type": 3 },
+      "label": {
+        "text": "2. Presentation\nPlan",
+        "fontSize": 28,
+        "strokeColor": "#1e1e1e"
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "n_compiler",
+      "x": 960,
+      "y": 460,
+      "width": 280,
+      "height": 150,
+      "strokeColor": "#868e96",
+      "backgroundColor": "#f1f3f5",
+      "fillStyle": "solid",
+      "roundness": { "type": 3 },
+      "label": {
+        "text": "3. Geometry\nCompiler",
+        "fontSize": 28,
+        "strokeColor": "#1e1e1e"
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "n_canvas",
+      "x": 1360,
+      "y": 460,
+      "width": 280,
+      "height": 150,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "roundness": { "type": 3 },
+      "label": {
+        "text": "4. Excalidraw\nLive Scene",
+        "fontSize": 28,
+        "strokeColor": "#1e1e1e"
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "e_prompt_plan",
+      "x": 440,
+      "y": 535,
+      "width": 120,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "start": { "id": "n_prompt" },
+      "end": { "id": "n_plan" }
+    },
+    {
+      "type": "arrow",
+      "id": "e_plan_compiler",
+      "x": 840,
+      "y": 535,
+      "width": 120,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "start": { "id": "n_plan" },
+      "end": { "id": "n_compiler" }
+    },
+    {
+      "type": "arrow",
+      "id": "e_compiler_canvas",
+      "x": 1240,
+      "y": 535,
+      "width": 120,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "start": { "id": "n_compiler" },
+      "end": { "id": "n_canvas" }
+    }
+  ],
+  "asset_ids": []
+}

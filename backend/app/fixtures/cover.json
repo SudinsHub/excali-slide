@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "frame": {
+    "width": 1920,
+    "height": 1080
+  },
+  "elements": [
+    {
+      "type": "frame",
+      "id": "slide-frame",
+      "name": "Cover",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "children": [
+        "title",
+        "subtitle"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 120,
+      "y": 380,
+      "width": 1680,
+      "height": 130,
+      "fontSize": 88,
+      "fontFamily": 1,
+      "text": "Excalidraw Slide Studio",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "center",
+      "verticalAlign": "middle"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "x": 120,
+      "y": 540,
+      "width": 1680,
+      "height": 60,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "Editable, beautiful presentation slides built on Excalidraw scenes",
+      "strokeColor": "#495057",
+      "textAlign": "center",
+      "verticalAlign": "middle"
+    }
+  ],
+  "asset_ids": []
+}

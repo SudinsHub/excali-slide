@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "frame": {
+    "width": 1920,
+    "height": 1080
+  },
+  "elements": [
+    {
+      "type": "frame",
+      "id": "slide-frame",
+      "name": "Architecture Highlights",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "children": [
+        "title",
+        "b0_i0",
+        "b0_i1",
+        "b0_i2",
+        "b0_i3"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 120,
+      "y": 100,
+      "width": 1680,
+      "height": 80,
+      "fontSize": 64,
+      "fontFamily": 1,
+      "text": "Core Architectural Highlights",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left",
+      "verticalAlign": "top"
+    },
+    {
+      "type": "text",
+      "id": "b0_i0",
+      "x": 140,
+      "y": 260,
+      "width": 1600,
+      "height": 55,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "• Truly editable Excalidraw scenes on a fixed 1920×1080 canvas",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "b0_i1",
+      "x": 140,
+      "y": 360,
+      "width": 1600,
+      "height": 55,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "• Python emits element skeletons with layout; browser normalizes geometry",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "b0_i2",
+      "x": 140,
+      "y": 460,
+      "width": 1600,
+      "height": 55,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "• Immutable version snapshots paired with optimistic draft concurrency",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    },
+    {
+      "type": "text",
+      "id": "b0_i3",
+      "x": 140,
+      "y": 560,
+      "width": 1600,
+      "height": 55,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "• High quality client-side presentation mode and PDF/ZIP raster exports",
+      "strokeColor": "#1e1e1e",
+      "textAlign": "left"
+    }
+  ],
+  "asset_ids": []
+}
