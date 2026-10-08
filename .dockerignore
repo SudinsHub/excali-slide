@@ -1,0 +1,10 @@
+.git
+backend/.venv
+backend/__pycache__
+backend/.pytest_cache
+backend/.ruff_cache
+backend/storage
+backend/storage_test
+frontend/node_modules
+frontend/dist
+frontend/.vite
