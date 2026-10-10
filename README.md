@@ -8,43 +8,58 @@ An AI-powered presentation slide studio where every slide is an editable Excalid
 - Node.js 20+ and `npm`
 - Docker and Docker Compose (for PostgreSQL)
 
-## Quick Start
+## Quick Start (Docker - All-in-One)
 
-### 1. Start Database
+The fastest way to run the entire stack (PostgreSQL, Backend with automatic migrations, and Frontend):
+
 ```bash
-docker compose up -d
+docker compose up --build
 ```
-This runs PostgreSQL on port 5432 with databases `slides` (dev) and `slides_test` (test).
 
-### 2. Backend Setup
+- **Frontend**: [http://localhost:5173](http://localhost:5173)
+- **Backend API**: [http://localhost:8000](http://localhost:8000) (Health check: [http://localhost:8000/health](http://localhost:8000/health))
+- **PostgreSQL**: `localhost:5432` (Databases: `slides`, `slides_test`)
+
+> **Note**: Database migrations (`alembic upgrade head`) run automatically on backend container startup. Hot-reload is enabled for both backend and frontend via volume mounts.
+
+---
+
+### Alternative: Local Development (Without Docker for Apps)
+
+If you prefer running Python and Node directly on your host machine (using Docker only for PostgreSQL):
+
 ```bash
+# 1. Start Database
+docker compose up -d postgres
+
+# 2. Backend Setup
 cd backend
 cp ../.env.example .env
 uv sync
 uv run alembic upgrade head
 uv run uvicorn app.main:app --reload --port 8000
-```
 
-### 3. Frontend Setup
-```bash
+# 3. Frontend Setup (in a separate terminal)
 cd frontend
 npm install
 npm run dev
 ```
-Open `http://localhost:5173` in your browser.
 
 ## Running Tests
 
-### Backend
+### In Docker
 ```bash
-cd backend
-uv run pytest
+docker compose exec backend uv run pytest
+docker compose exec frontend npm test -- --run
 ```
 
-### Frontend
+### Or Locally
 ```bash
-cd frontend
-npm test
+# Backend
+cd backend && uv run pytest
+
+# Frontend
+cd frontend && npm test
 ```
 
 ## Linting & Formatting

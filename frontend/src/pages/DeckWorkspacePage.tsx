@@ -5,7 +5,7 @@ import {
   FileText,
   Play,
 } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { RightPanel } from '../components/RightPanel';
@@ -209,6 +209,12 @@ export const DeckWorkspacePage: React.FC = () => {
     }
   };
 
+  const handleRefreshSlide = useCallback(() => {
+    if (activeSlideId) {
+      selectSlide(activeSlideId);
+    }
+  }, [activeSlideId, selectSlide]);
+
   if (!currentDeck) {
     return (
       <div className="h-screen flex items-center justify-center bg-slate-50">
@@ -324,7 +330,7 @@ export const DeckWorkspacePage: React.FC = () => {
             <ExcalidrawEditor
               key={activeSlideDetail.id}
               slide={activeSlideDetail}
-              onRefreshSlide={() => selectSlide(activeSlideDetail.id)}
+              onRefreshSlide={handleRefreshSlide}
             />
           ) : (
             <div className="h-full flex items-center justify-center text-xs text-slate-400">

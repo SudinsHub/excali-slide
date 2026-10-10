@@ -11,13 +11,15 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
-# Set test environment
-os.environ["ENV"] = "dev"
-os.environ["DATABASE_URL"] = "postgresql+asyncpg://postgres:postgres@localhost:5432/slides_test"
-os.environ["TEST_DATABASE_URL"] = (
-    "postgresql+asyncpg://postgres:postgres@localhost:5432/slides_test"
+# Set test environment if not already set
+os.environ.setdefault("ENV", "dev")
+os.environ.setdefault(
+    "DATABASE_URL", "postgresql+asyncpg://postgres:postgres@localhost:5432/slides_test"
 )
-os.environ["STORAGE_DIR"] = "./storage_test"
+os.environ.setdefault(
+    "TEST_DATABASE_URL", "postgresql+asyncpg://postgres:postgres@localhost:5432/slides_test"
+)
+os.environ.setdefault("STORAGE_DIR", "./storage_test")
 
 from app.config import settings
 from app.db import get_db

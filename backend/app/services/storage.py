@@ -21,9 +21,9 @@ class LocalStorage:
         self.base_dir.mkdir(parents=True, exist_ok=True)
 
     def _resolve_path(self, key: str) -> Path:
-        # Prevent path traversal
-        clean_key = key.lstrip("/\\")
-        target_path = (self.base_dir / clean_key).resolve()
+        # Prevent path traversal across OS platforms
+        normalized = key.replace("\\", "/").lstrip("/")
+        target_path = (self.base_dir / normalized).resolve()
         try:
             target_path.relative_to(self.base_dir)
         except ValueError:
