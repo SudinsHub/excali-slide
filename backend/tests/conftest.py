@@ -59,6 +59,7 @@ async def test_engine():
 @pytest_asyncio.fixture(autouse=True)
 async def clean_database(test_engine):
     tables = [
+        "job",
         "llm_call",
         "deck_revision",
         "slide_version",

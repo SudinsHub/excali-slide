@@ -58,7 +58,9 @@ def layout_comparison(
 
     max_nodes_in_col = max((len(nodes) for nodes in nodes_by_group.values()), default=1)
     card_gap = 16.0
-    total_col_h = header_h + 20.0 + max_nodes_in_col * max_card_h + max(0, max_nodes_in_col - 1) * card_gap
+    total_col_h = (
+        header_h + 20.0 + max_nodes_in_col * max_card_h + max(0, max_nodes_in_col - 1) * card_gap
+    )
 
     start_y = region.y + max(0.0, (region.h - total_col_h) / 2.0)
 

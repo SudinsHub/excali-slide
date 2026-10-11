@@ -55,3 +55,37 @@
 - Backend container includes Graphviz `dot 2.42.4`, Python 3.12, UV, and Hypothesis.
 - Frontend container runs Vite HMR on port 5173 and supports in-container testing (`npm test`) and building (`npm run build`).
 
+## Pass 3: Generation Pipeline Implementation Decisions
+
+### 10. Atomic Job Claim via PostgreSQL CTE (`FOR UPDATE SKIP LOCKED`)
+- Implemented queue concurrency without Redis or external message brokers.
+- One atomic statement claims `N` jobs:
+  ```sql
+  WITH claimable AS (
+    SELECT id FROM job
+    WHERE status = 'queued' AND run_after <= NOW()
+    ORDER BY priority DESC, created_at ASC
+    LIMIT :n
+    FOR UPDATE SKIP LOCKED
+  )
+  UPDATE job SET status = 'running', locked_by = :worker_id, locked_at = NOW(), ...
+  WHERE id IN (SELECT id FROM claimable) RETURNING *;
+  ```
+- Guaranteed zero double-claims across multiple worker processes.
+
+### 11. SSE Session Binding & Delta Polling
+- In `app/api/events.py`, the `deck_event_generator` binds its session maker directly to the active database engine (`db.bind`).
+- This ensures test suites execute against `slides_test` without leaking connections or locking dev databases, and keeps the generator decoupled from any global singletons.
+- A 700ms delta tick emits events only when `updated_at > last_seen`, avoiding redundant network payloads.
+
+### 12. FakeLLM for Deterministic Zero-Network CI
+- `FakeLLM` provides full mock support for `Plan`, `SlideIR`, and repair flows without requiring real API keys or external network calls.
+- Activated via `FAKE_LLM=1` environment variable.
+- Enables complete end-to-end integration testing in headless environments.
+
+### 13. Image Deduplication & Downscaling Strategy
+- Images embedded in PDF/DOCX/PPTX notes are extracted via PIL/Pillow.
+- Deduplication: SHA-1 hex digest computed on raw bytes; identical images share a single `Asset` record.
+- Noise filtering: Decorative bullets and separator icons with both dimensions `< 200px` are discarded.
+- Dimension bounding: Any image with long side `> 1600px` is downscaled using bicubic resample to maintain crispness while preserving canvas budget.
+

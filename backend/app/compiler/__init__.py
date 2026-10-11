@@ -9,7 +9,6 @@ from pydantic import BaseModel, Field
 from app.compiler.layouts.page import CompileCtx, layout_page
 from app.compiler.quality import check_quality
 from app.ir.schemas import DiagramBlock, SlideIR
-from app.ir.validators import validate_ir
 
 
 class CompileStats(BaseModel):
@@ -40,6 +39,8 @@ def compile(ir: SlideIR, ctx: CompileCtx | None = None) -> CompileResult:
     all_errors: list[str] = []
 
     # 1. Validate IR
+    from app.ir.validators import validate_ir
+
     ir_issues = validate_ir(ir)
     validation_errors = [i for i in ir_issues if i.severity == "error"]
     validation_warnings = [i for i in ir_issues if i.severity == "warning"]
@@ -81,9 +82,7 @@ def compile(ir: SlideIR, ctx: CompileCtx | None = None) -> CompileResult:
 
     # 4. Compute Statistics
     elements = skeleton.get("elements", [])
-    node_count = sum(
-        len(b.nodes) for b in ir.blocks if isinstance(b, DiagramBlock)
-    )
+    node_count = sum(len(b.nodes) for b in ir.blocks if isinstance(b, DiagramBlock))
 
     fonts = []
     min_x, min_y = 1920.0, 1080.0

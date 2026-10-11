@@ -3,11 +3,17 @@ import {
   Download,
   FileArchive,
   FileText,
+  Loader2,
   Play,
+  Sparkles,
 } from 'lucide-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
+import { useDeckEvents } from '../api/useDeckEvents';
+import { BriefStep } from '../components/pipeline/BriefStep';
+import { GenerationProgress } from '../components/pipeline/GenerationProgress';
+import { PlanStep } from '../components/pipeline/PlanStep';
 import { RightPanel } from '../components/RightPanel';
 import { SaveStateIndicator } from '../components/SaveStateIndicator';
 import { ThumbnailsRail } from '../components/ThumbnailsRail';
@@ -15,7 +21,7 @@ import { ExcalidrawEditor } from '../excalidraw/ExcalidrawEditor';
 import { exportDeckToPdf } from '../export/exportPdf';
 import { exportDeckToZip, slugify } from '../export/exportZip';
 import { useDeckStore } from '../store/deckStore';
-import { SlideDetail } from '../types';
+import { Resource, SlideDetail } from '../types';
 
 export const DeckWorkspacePage: React.FC = () => {
   const { id: deckId } = useParams<{ id: string }>();
@@ -36,6 +42,11 @@ export const DeckWorkspacePage: React.FC = () => {
 
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [deckTitle, setDeckTitle] = useState('');
+  const [resources, setResources] = useState<Resource[]>([]);
+  const [activeJobsCount, setActiveJobsCount] = useState(0);
+
+  // Workflow step: brief | plan | generating | slides
+  const [activeStep, setActiveStep] = useState<'brief' | 'plan' | 'generating' | 'slides'>('slides');
 
   // Export progress modal state
   const [isExporting, setIsExporting] = useState(false);
@@ -46,23 +57,89 @@ export const DeckWorkspacePage: React.FC = () => {
   });
   const cancelExportRef = useRef(false);
 
+  // Load resources
+  const loadResources = useCallback(async () => {
+    if (!deckId) return;
+    try {
+      const res = await api.getResources(deckId);
+      setResources(res);
+    } catch (err) {
+      console.warn('Failed to load resources:', err);
+    }
+  }, [deckId]);
+
   // Initial load
   useEffect(() => {
     if (deckId) {
       fetchDeckAndSlides(deckId);
+      loadResources();
     }
-  }, [deckId]);
+  }, [deckId, loadResources]);
 
-  // Keep deck title in sync
+  // Determine initial step based on deck status
   useEffect(() => {
-    if (currentDeck) {
-      setDeckTitle(currentDeck.title);
+    if (!currentDeck) return;
+    setDeckTitle(currentDeck.title);
+
+    const stepQuery = searchParams.get('step');
+    if (stepQuery && ['brief', 'plan', 'slides'].includes(stepQuery)) {
+      setActiveStep(stepQuery as any);
+      return;
     }
-  }, [currentDeck]);
+
+    if (currentDeck.status === 'draft' || currentDeck.status === 'ingesting') {
+      setActiveStep('brief');
+    } else if (currentDeck.status === 'planning' || currentDeck.status === 'plan_review') {
+      setActiveStep('plan');
+    } else if (currentDeck.status === 'generating') {
+      setActiveStep('generating');
+    } else {
+      setActiveStep('slides');
+    }
+  }, [currentDeck?.id, currentDeck?.status]);
+
+  // Live SSE updates
+  useDeckEvents(deckId, {
+    onSnapshot: (data) => {
+      if (data.deck) setCurrentDeck({ ...currentDeck, ...data.deck });
+      if (data.resources) setResources(data.resources);
+      if (data.jobs) setActiveJobsCount(data.jobs.length);
+      if (data.slides && data.slides.length > 0) {
+        if (deckId) fetchDeckAndSlides(deckId);
+      }
+    },
+    onDeckChange: (d) => {
+      if (currentDeck) {
+        setCurrentDeck({ ...currentDeck, status: d.status, current_plan_id: d.current_plan_id });
+      }
+      if (d.status === 'ready' && activeStep === 'generating') {
+        setActiveStep('slides');
+        if (deckId) fetchDeckAndSlides(deckId);
+      } else if (d.status === 'plan_review' && activeStep === 'brief') {
+        setActiveStep('plan');
+      } else if (d.status === 'generating' && activeStep !== 'generating') {
+        setActiveStep('generating');
+        if (deckId) fetchDeckAndSlides(deckId);
+      }
+    },
+    onSlideChange: () => {
+      if (deckId) fetchDeckAndSlides(deckId);
+    },
+    onResourceChange: () => {
+      loadResources();
+    },
+    onJobChange: (j) => {
+      if (j.status === 'queued' || j.status === 'running') {
+        setActiveJobsCount((prev) => Math.max(1, prev));
+      } else {
+        setActiveJobsCount((prev) => Math.max(0, prev - 1));
+      }
+    },
+  });
 
   // Handle slide selection based on URL search query or default to first slide
   useEffect(() => {
-    if (slides.length === 0) return;
+    if (slides.length === 0 || activeStep !== 'slides') return;
 
     const querySlideId = searchParams.get('slide');
     if (querySlideId && slides.some((s) => s.id === querySlideId)) {
@@ -70,24 +147,17 @@ export const DeckWorkspacePage: React.FC = () => {
         selectSlide(querySlideId);
       }
     } else {
-      // Pick first slide
       const firstSlide = slides[0];
       selectSlide(firstSlide.id);
-      setSearchParams({ slide: firstSlide.id }, { replace: true });
+      setSearchParams({ slide: firstSlide.id, step: 'slides' }, { replace: true });
     }
-  }, [slides]);
-
-  // Update query param when active slide changes
-  useEffect(() => {
-    if (activeSlideId && searchParams.get('slide') !== activeSlideId) {
-      setSearchParams({ slide: activeSlideId }, { replace: true });
-    }
-  }, [activeSlideId]);
+  }, [slides, activeStep]);
 
   // Keyboard navigation Alt+Up / Alt+Down between slides
   useEffect(() => {
+    if (activeStep !== 'slides') return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore if user is typing in an input or textarea
       const target = e.target as HTMLElement;
       if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) {
         return;
@@ -98,40 +168,41 @@ export const DeckWorkspacePage: React.FC = () => {
         const currentIdx = slides.findIndex((s) => s.id === activeSlideId);
         if (currentIdx === -1) return;
 
-        let nextIdx = currentIdx;
         if (e.key === 'ArrowUp' && currentIdx > 0) {
-          nextIdx = currentIdx - 1;
+          selectSlide(slides[currentIdx - 1].id);
         } else if (e.key === 'ArrowDown' && currentIdx < slides.length - 1) {
-          nextIdx = currentIdx + 1;
-        }
-
-        if (nextIdx !== currentIdx) {
-          selectSlide(slides[nextIdx].id);
+          selectSlide(slides[currentIdx + 1].id);
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [slides, activeSlideId]);
+  }, [slides, activeSlideId, selectSlide, activeStep]);
 
   const handleTitleSubmit = async () => {
-    if (!currentDeck || !deckTitle.trim()) return;
-    setIsEditingTitle(false);
-    if (deckTitle.trim() !== currentDeck.title) {
-      try {
-        const updated = await api.updateDeck(currentDeck.id, { title: deckTitle.trim() });
-        setCurrentDeck(updated);
-      } catch (err: any) {
-        alert(err.message || 'Failed to update title');
-      }
+    if (!currentDeck || !deckTitle.trim()) {
+      setIsEditingTitle(false);
+      return;
+    }
+    if (deckTitle.trim() === currentDeck.title) {
+      setIsEditingTitle(false);
+      return;
+    }
+
+    try {
+      const updated = await api.updateDeck(currentDeck.id, { title: deckTitle.trim() });
+      setCurrentDeck(updated);
+    } catch (err: any) {
+      alert(err.message || 'Failed to rename deck');
+    } finally {
+      setIsEditingTitle(false);
     }
   };
 
   const handlePresent = () => {
     if (!currentDeck) return;
-    const startSlide = activeSlideId || (slides[0]?.id ?? '');
-    navigate(`/present/${currentDeck.id}?slide=${startSlide}`);
+    navigate(`/present/${currentDeck.id}`);
   };
 
   const handleExportPdf = async (quality: 'standard' | 'high' = 'high') => {
@@ -142,22 +213,16 @@ export const DeckWorkspacePage: React.FC = () => {
     cancelExportRef.current = false;
 
     try {
-      // 1. Fetch details of all slides
-      const fullSlides: SlideDetail[] = [];
-      for (const s of slides) {
-        const detail = await api.getSlide(s.id);
-        fullSlides.push(detail);
-      }
-
-      // 2. Generate PDF
-      const blob = await exportDeckToPdf(fullSlides, currentDeck.title, {
+      const fullSlides = await Promise.all(slides.map((s) => api.getSlide(s.id)));
+      const pdfBlob = await exportDeckToPdf(fullSlides, currentDeck.title, {
         quality,
-        onProgress: (cur, tot) => setExportProgress({ current: cur, total: tot }),
+        onProgress: (current: number, total: number) => {
+          setExportProgress({ current, total });
+        },
         isCancelled: () => cancelExportRef.current,
       });
 
-      // 3. Download
-      const url = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(pdfBlob);
       const a = document.createElement('a');
       a.href = url;
       a.download = `${slugify(currentDeck.title)}.pdf`;
@@ -181,19 +246,15 @@ export const DeckWorkspacePage: React.FC = () => {
     cancelExportRef.current = false;
 
     try {
-      const fullSlides: SlideDetail[] = [];
-      for (const s of slides) {
-        const detail = await api.getSlide(s.id);
-        fullSlides.push(detail);
-      }
-
-      const blob = await exportDeckToZip(fullSlides, currentDeck.title, {
-        scale: 1.0,
-        onProgress: (cur, tot) => setExportProgress({ current: cur, total: tot }),
+      const fullSlides = await Promise.all(slides.map((s) => api.getSlide(s.id)));
+      const zipBlob = await exportDeckToZip(fullSlides, currentDeck.title, {
+        onProgress: (current: number, total: number) => {
+          setExportProgress({ current, total });
+        },
         isCancelled: () => cancelExportRef.current,
       });
 
-      const url = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(zipBlob);
       const a = document.createElement('a');
       a.href = url;
       a.download = `${slugify(currentDeck.title)}.zip`;
@@ -226,7 +287,7 @@ export const DeckWorkspacePage: React.FC = () => {
   return (
     <div className="h-screen flex flex-col bg-slate-100 overflow-hidden">
       {/* Top Header */}
-      <header className="h-14 border-b border-slate-200 bg-white px-4 flex items-center justify-between z-10">
+      <header className="h-14 border-b border-slate-200 bg-white px-4 flex items-center justify-between z-10 shrink-0">
         <div className="flex items-center gap-4">
           <Link
             to="/"
@@ -262,85 +323,181 @@ export const DeckWorkspacePage: React.FC = () => {
 
           {/* Workflow Steps Indicator */}
           <div className="hidden md:flex items-center gap-1.5 ml-4 pl-4 border-l border-slate-200 text-xs">
-            <span className="text-slate-400 font-medium px-2 py-0.5 rounded cursor-not-allowed">
+            <button
+              onClick={() => {
+                setActiveStep('brief');
+                setSearchParams({ step: 'brief' }, { replace: true });
+              }}
+              className={`px-2.5 py-1 rounded-lg font-medium transition-colors ${
+                activeStep === 'brief'
+                  ? 'bg-brand-50 text-brand-700 font-semibold border border-brand-200'
+                  : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50'
+              }`}
+            >
               1. Brief
-            </span>
+            </button>
             <span className="text-slate-300">›</span>
-            <span className="text-slate-400 font-medium px-2 py-0.5 rounded cursor-not-allowed">
+            <button
+              onClick={() => {
+                setActiveStep('plan');
+                setSearchParams({ step: 'plan' }, { replace: true });
+              }}
+              className={`px-2.5 py-1 rounded-lg font-medium transition-colors ${
+                activeStep === 'plan' || activeStep === 'generating'
+                  ? 'bg-brand-50 text-brand-700 font-semibold border border-brand-200'
+                  : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50'
+              }`}
+            >
               2. Plan
-            </span>
+            </button>
             <span className="text-slate-300">›</span>
-            <span className="bg-brand-50 text-brand-700 font-semibold px-2 py-0.5 rounded border border-brand-200">
+            <button
+              onClick={() => {
+                setActiveStep('slides');
+                setSearchParams({ step: 'slides' }, { replace: true });
+              }}
+              className={`px-2.5 py-1 rounded-lg font-medium transition-colors ${
+                activeStep === 'slides'
+                  ? 'bg-brand-50 text-brand-700 font-semibold border border-brand-200'
+                  : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50'
+              }`}
+            >
               3. Slides
-            </span>
+            </button>
           </div>
         </div>
 
         {/* Right Action Tools */}
         <div className="flex items-center gap-2.5">
-          <SaveStateIndicator
-            status={saveStatus}
-            errorMessage={errorMessage}
-            onRetry={() => {
-              if (activeSlideId) selectSlide(activeSlideId);
-            }}
-          />
+          {/* Active Job indicator */}
+          {activeJobsCount > 0 && (
+            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-lg text-amber-700 text-xs font-semibold animate-pulse">
+              <Loader2 className="w-3 h-3 animate-spin" />
+              <span>Jobs active</span>
+            </div>
+          )}
 
-          <div className="h-4 w-px bg-slate-200 mx-1" />
+          {activeStep === 'slides' && (
+            <>
+              <SaveStateIndicator
+                status={saveStatus}
+                errorMessage={errorMessage}
+                onRetry={() => {
+                  if (activeSlideId) selectSlide(activeSlideId);
+                }}
+              />
 
-          {/* Export PDF */}
-          <button
-            onClick={() => handleExportPdf('high')}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
-            title="Export deck to PDF"
-          >
-            <FileText className="w-3.5 h-3.5 text-slate-500" />
-            <span>PDF</span>
-          </button>
+              <div className="h-4 w-px bg-slate-200 mx-1" />
 
-          {/* Export ZIP */}
-          <button
-            onClick={handleExportZip}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
-            title="Export high-res slide PNGs in a ZIP"
-          >
-            <FileArchive className="w-3.5 h-3.5 text-slate-500" />
-            <span>ZIP</span>
-          </button>
+              {/* Export PDF */}
+              <button
+                onClick={() => handleExportPdf('high')}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+                title="Export deck to PDF"
+              >
+                <FileText className="w-3.5 h-3.5 text-slate-500" />
+                <span>PDF</span>
+              </button>
 
-          {/* Present Mode Button */}
-          <button
-            onClick={handlePresent}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-xs transition-colors"
-          >
-            <Play className="w-3.5 h-3.5 fill-current" />
-            <span>Present</span>
-          </button>
+              {/* Export ZIP */}
+              <button
+                onClick={handleExportZip}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+                title="Export high-res slide PNGs in a ZIP"
+              >
+                <FileArchive className="w-3.5 h-3.5 text-slate-500" />
+                <span>ZIP</span>
+              </button>
+
+              {/* Present Mode Button */}
+              <button
+                onClick={handlePresent}
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-xs transition-colors"
+              >
+                <Play className="w-3.5 h-3.5 fill-current" />
+                <span>Present</span>
+              </button>
+            </>
+          )}
         </div>
       </header>
 
-      {/* Main Workspace Body */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Left Thumbnails Rail */}
-        <ThumbnailsRail />
+      {/* Main Workspace Body by Step */}
+      <div className="flex-1 overflow-auto">
+        {activeStep === 'brief' && (
+          <BriefStep
+            deck={currentDeck}
+            resources={resources}
+            onDeckUpdated={setCurrentDeck}
+            onResourcesChanged={loadResources}
+            onProceedToPlan={() => {
+              setActiveStep('plan');
+              setSearchParams({ step: 'plan' }, { replace: true });
+            }}
+          />
+        )}
 
-        {/* Center Canvas Area */}
-        <div className="flex-1 h-full bg-white relative overflow-hidden">
-          {activeSlideDetail ? (
-            <ExcalidrawEditor
-              key={activeSlideDetail.id}
-              slide={activeSlideDetail}
-              onRefreshSlide={handleRefreshSlide}
-            />
-          ) : (
-            <div className="h-full flex items-center justify-center text-xs text-slate-400">
-              Select or create a slide to edit
+        {activeStep === 'plan' && (
+          <PlanStep
+            deckId={currentDeck.id}
+            resources={resources}
+            deck={currentDeck}
+            onBackToBrief={() => {
+              setActiveStep('brief');
+              setSearchParams({ step: 'brief' }, { replace: true });
+            }}
+            onPlanApproved={() => {
+              setActiveStep('generating');
+              if (deckId) fetchDeckAndSlides(deckId);
+            }}
+          />
+        )}
+
+        {activeStep === 'generating' && (
+          <GenerationProgress
+            deckId={currentDeck.id}
+            slides={slides}
+            onSlideRetry={(slideId) => {
+              api.regenerateSlide(slideId).then(() => {
+                if (deckId) fetchDeckAndSlides(deckId);
+              }).catch(console.error);
+            }}
+            onAllReady={() => {
+              setActiveStep('slides');
+              setSearchParams({ step: 'slides' }, { replace: true });
+              if (deckId) fetchDeckAndSlides(deckId);
+            }}
+            onCancel={() => {
+              setActiveStep('plan');
+              setSearchParams({ step: 'plan' }, { replace: true });
+            }}
+          />
+        )}
+
+        {activeStep === 'slides' && (
+          <div className="h-full flex overflow-hidden">
+            {/* Left Thumbnails Rail */}
+            <ThumbnailsRail />
+
+            {/* Center Canvas Area */}
+            <div className="flex-1 h-full bg-white relative overflow-hidden">
+              {activeSlideDetail ? (
+                <ExcalidrawEditor
+                  key={activeSlideDetail.id}
+                  slide={activeSlideDetail}
+                  onRefreshSlide={handleRefreshSlide}
+                />
+              ) : (
+                <div className="h-full flex items-center justify-center text-xs text-slate-400">
+                  Select or create a slide to edit
+                </div>
+              )}
             </div>
-          )}
-        </div>
 
-        {/* Right Versions / AI Panel */}
-        <RightPanel />
+            {/* Right Versions / AI Panel */}
+            <RightPanel />
+          </div>
+        )}
       </div>
 
       {/* Export Progress Modal */}

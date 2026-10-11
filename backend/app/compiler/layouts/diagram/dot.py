@@ -64,9 +64,7 @@ def layout_dot(
     grouped_node_ids = set()
     if block.kind == "flow" and block.groups:
         for group in block.groups:
-            g_nodes = group.node_ids or [
-                n.id for n in block.nodes if n.group_id == group.id
-            ]
+            g_nodes = group.node_ids or [n.id for n in block.nodes if n.group_id == group.id]
             if g_nodes:
                 lines.append(f"  subgraph cluster_{group.id} {{")
                 clean_label = group.label.replace('"', '\\"')
@@ -74,18 +72,14 @@ def layout_dot(
                 for nid in g_nodes:
                     grouped_node_ids.add(nid)
                     w, h = node_sizes.get(nid, (160.0, 72.0))
-                    lines.append(
-                        f'    "{nid}" [width={w / 72.0:.3f}, height={h / 72.0:.3f}];'
-                    )
+                    lines.append(f'    "{nid}" [width={w / 72.0:.3f}, height={h / 72.0:.3f}];')
                 lines.append("  }")
 
     # Top-level nodes not in any cluster
     for node in block.nodes:
         if node.id not in grouped_node_ids:
             w, h = node_sizes[node.id]
-            lines.append(
-                f'  "{node.id}" [width={w / 72.0:.3f}, height={h / 72.0:.3f}];'
-            )
+            lines.append(f'  "{node.id}" [width={w / 72.0:.3f}, height={h / 72.0:.3f}];')
 
     # Edges
     for edge in block.edges:
@@ -145,9 +139,7 @@ def layout_dot(
             cw = c_urx - c_llx
             ch = c_ury - c_lly
             gid = name.replace("cluster_", "")
-            group_label = next(
-                (g.label for g in block.groups if g.id == gid), "Group"
-            )
+            group_label = next((g.label for g in block.groups if g.id == gid), "Group")
             cluster_boxes.append(
                 {"id": gid, "label": group_label, "x": cx, "y": cy, "w": cw, "h": ch}
             )
@@ -277,8 +269,7 @@ def layout_dot(
 
             # Check if reverse edge exists
             is_bidirectional = any(
-                e.source == edge.target and e.target == edge.source
-                for e in block.edges
+                e.source == edge.target and e.target == edge.source for e in block.edges
             )
             if is_bidirectional:
                 dx = r_dst.cx - r_src.cx

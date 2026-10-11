@@ -1,0 +1,37 @@
+Deck Brief: {{ brief }}
+Tone: {{ tone }}, Density: {{ density }}
+
+Plan Outline:
+{% for s in plan_outline %}
+- {{ s.key }}: [{{ s.role }} / {{ s.kind }}] {{ s.title }} (Intent: {{ s.intent }})
+{% endfor %}
+
+This Plan Slide:
+{{ plan_slide_json }}
+
+Glossary:
+{% for g in glossary %}
+- {{ g.term }}: {{ g.short_label }}
+{% else %}
+(None)
+{% endfor %}
+
+Images for this Slide:
+{% for img in slide_images %}
+- Asset ID: {{ img.asset_id }}
+  Caption: {{ img.caption }}
+  Kind: {{ img.kind }}
+{% else %}
+(None)
+{% endfor %}
+
+Relevant Source Excerpts:
+{{ source_excerpts }}
+{% if issues %}
+
+Your previous output had these problems:
+{% for iss in issues %}
+- [{{ iss.code }}] {{ iss.path }}: {{ iss.message }}
+{% endfor %}
+Fix them and return the full corrected JSON.
+{% endif %}

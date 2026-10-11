@@ -90,7 +90,7 @@ def layout_timeline(
         card_h = lh + (sh + 6.0 if node.sublabel else 0.0)
         card_x = mx - card_w / 2.0
 
-        is_above = (idx % 2 == 0)
+        is_above = idx % 2 == 0
         if is_above:
             card_y = axis_y - 36.0 - card_h
             top_bound = min(top_bound, card_y)

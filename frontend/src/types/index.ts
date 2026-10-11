@@ -108,3 +108,89 @@ export interface ExcalidrawScene {
 }
 
 export type SaveStatus = 'saved' | 'saving' | 'conflict' | 'error';
+
+// --- Pass 3 Pipeline Interfaces ---
+
+export interface ResourceImage {
+  id: string;
+  asset_id: string;
+  caption: string | null;
+  locator: string | null;
+}
+
+export interface Resource {
+  id: string;
+  deck_id: string;
+  kind: string;
+  filename: string;
+  mime: string;
+  size: number;
+  status: 'uploaded' | 'parsing' | 'parsed' | 'failed';
+  text: string | null;
+  meta: Record<string, any> | null;
+  error: string | null;
+  images: ResourceImage[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DiagramHint {
+  kind: 'flow' | 'hierarchy' | 'layers' | 'cycle' | 'timeline' | 'comparison' | 'mindmap';
+  description: string;
+}
+
+export interface PlanSlide {
+  key: string;
+  role: 'cover' | 'agenda' | 'section' | 'content' | 'process' | 'comparison' | 'data' | 'summary' | 'closing';
+  title: string;
+  kind: 'text' | 'diagram' | 'hybrid';
+  layout_hint?: string | null;
+  diagram_hint?: DiagramHint | null;
+  key_points: string[];
+  source_refs?: Array<{ resource_id: string; locator?: string | null }>;
+  image_ids: string[];
+  intent: string;
+}
+
+export interface GlossaryItem {
+  term: string;
+  short_label: string;
+}
+
+export interface PlanContent {
+  title: string;
+  audience: string;
+  goal: string;
+  narrative_summary: string;
+  glossary: GlossaryItem[];
+  slides: PlanSlide[];
+}
+
+export interface PlanRecord {
+  id: string;
+  deck_id: string;
+  version: number;
+  status: 'draft' | 'approved';
+  content: PlanContent;
+  created_by: 'ai' | 'user';
+  created_at: string;
+  updated_at: string;
+}
+
+export interface JobRecord {
+  id: string;
+  deck_id: string;
+  slide_id: string | null;
+  kind: string;
+  status: 'queued' | 'running' | 'succeeded' | 'failed' | 'cancelled';
+  priority: number;
+  progress: Record<string, any>;
+  result: Record<string, any> | null;
+  attempts: number;
+  error: string | null;
+  cancel_requested: boolean;
+  started_at: string | null;
+  finished_at: string | null;
+  created_at: string;
+  updated_at: string;
+}

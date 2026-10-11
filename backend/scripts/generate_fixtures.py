@@ -102,9 +102,19 @@ fixtures = {
                 "kind": "flow",
                 "direction": "LR",
                 "nodes": [
-                    {"id": "ingress", "label": "API Ingress", "shape": "rounded", "emphasis": "primary"},
+                    {
+                        "id": "ingress",
+                        "label": "API Ingress",
+                        "shape": "rounded",
+                        "emphasis": "primary",
+                    },
                     {"id": "bus", "label": "Event Bus", "shape": "rect", "emphasis": "accent"},
-                    {"id": "sink", "label": "Data Sink", "shape": "rounded", "emphasis": "positive"},
+                    {
+                        "id": "sink",
+                        "label": "Data Sink",
+                        "shape": "rounded",
+                        "emphasis": "positive",
+                    },
                 ],
                 "edges": [
                     {"source": "ingress", "target": "bus", "label": "publish"},
@@ -164,9 +174,24 @@ fixtures = {
                 "kind": "flow",
                 "direction": "LR",
                 "nodes": [
-                    {"id": "source", "label": "Raw Sources", "shape": "rounded", "emphasis": "normal"},
-                    {"id": "parser", "label": "Format Parser", "shape": "rounded", "emphasis": "primary"},
-                    {"id": "validator", "label": "Schema Gate", "shape": "diamond", "emphasis": "accent"},
+                    {
+                        "id": "source",
+                        "label": "Raw Sources",
+                        "shape": "rounded",
+                        "emphasis": "normal",
+                    },
+                    {
+                        "id": "parser",
+                        "label": "Format Parser",
+                        "shape": "rounded",
+                        "emphasis": "primary",
+                    },
+                    {
+                        "id": "validator",
+                        "label": "Schema Gate",
+                        "shape": "diamond",
+                        "emphasis": "accent",
+                    },
                     {"id": "db", "label": "Warehouse", "shape": "rounded", "emphasis": "positive"},
                 ],
                 "edges": [
@@ -192,10 +217,34 @@ fixtures = {
                     {"id": "internal", "label": "Private Network"},
                 ],
                 "nodes": [
-                    {"id": "waf", "label": "Cloud WAF", "shape": "rounded", "emphasis": "primary", "group_id": "dmz"},
-                    {"id": "gateway", "label": "API Gateway", "shape": "rounded", "emphasis": "accent", "group_id": "dmz"},
-                    {"id": "auth", "label": "OAuth Server", "shape": "rounded", "emphasis": "normal", "group_id": "internal"},
-                    {"id": "service", "label": "Core Engine", "shape": "rounded", "emphasis": "positive", "group_id": "internal"},
+                    {
+                        "id": "waf",
+                        "label": "Cloud WAF",
+                        "shape": "rounded",
+                        "emphasis": "primary",
+                        "group_id": "dmz",
+                    },
+                    {
+                        "id": "gateway",
+                        "label": "API Gateway",
+                        "shape": "rounded",
+                        "emphasis": "accent",
+                        "group_id": "dmz",
+                    },
+                    {
+                        "id": "auth",
+                        "label": "OAuth Server",
+                        "shape": "rounded",
+                        "emphasis": "normal",
+                        "group_id": "internal",
+                    },
+                    {
+                        "id": "service",
+                        "label": "Core Engine",
+                        "shape": "rounded",
+                        "emphasis": "positive",
+                        "group_id": "internal",
+                    },
                 ],
                 "edges": [
                     {"source": "waf", "target": "gateway"},
@@ -216,11 +265,36 @@ fixtures = {
                 "kind": "hierarchy",
                 "direction": "TB",
                 "nodes": [
-                    {"id": "ceo", "label": "Chief Executive", "shape": "rounded", "emphasis": "primary"},
-                    {"id": "vp_eng", "label": "VP Engineering", "shape": "rounded", "emphasis": "accent"},
-                    {"id": "vp_prod", "label": "VP Product", "shape": "rounded", "emphasis": "accent"},
-                    {"id": "lead_be", "label": "Backend Team", "shape": "rect", "emphasis": "normal"},
-                    {"id": "lead_fe", "label": "Frontend Team", "shape": "rect", "emphasis": "normal"},
+                    {
+                        "id": "ceo",
+                        "label": "Chief Executive",
+                        "shape": "rounded",
+                        "emphasis": "primary",
+                    },
+                    {
+                        "id": "vp_eng",
+                        "label": "VP Engineering",
+                        "shape": "rounded",
+                        "emphasis": "accent",
+                    },
+                    {
+                        "id": "vp_prod",
+                        "label": "VP Product",
+                        "shape": "rounded",
+                        "emphasis": "accent",
+                    },
+                    {
+                        "id": "lead_be",
+                        "label": "Backend Team",
+                        "shape": "rect",
+                        "emphasis": "normal",
+                    },
+                    {
+                        "id": "lead_fe",
+                        "label": "Frontend Team",
+                        "shape": "rect",
+                        "emphasis": "normal",
+                    },
                 ],
                 "edges": [
                     {"source": "ceo", "target": "vp_eng"},
@@ -241,10 +315,30 @@ fixtures = {
                 "type": "diagram",
                 "kind": "layers",
                 "nodes": [
-                    {"id": "l_ui", "label": "Presentation Layer", "sublabel": "React + TypeScript", "emphasis": "primary"},
-                    {"id": "l_api", "label": "API Gateway Tier", "sublabel": "FastAPI + REST", "emphasis": "accent"},
-                    {"id": "l_domain", "label": "Business Logic Tier", "sublabel": "Pure Domain Models", "emphasis": "normal"},
-                    {"id": "l_persist", "label": "Persistence Tier", "sublabel": "PostgreSQL + S3", "emphasis": "positive"},
+                    {
+                        "id": "l_ui",
+                        "label": "Presentation Layer",
+                        "sublabel": "React + TypeScript",
+                        "emphasis": "primary",
+                    },
+                    {
+                        "id": "l_api",
+                        "label": "API Gateway Tier",
+                        "sublabel": "FastAPI + REST",
+                        "emphasis": "accent",
+                    },
+                    {
+                        "id": "l_domain",
+                        "label": "Business Logic Tier",
+                        "sublabel": "Pure Domain Models",
+                        "emphasis": "normal",
+                    },
+                    {
+                        "id": "l_persist",
+                        "label": "Persistence Tier",
+                        "sublabel": "PostgreSQL + S3",
+                        "emphasis": "positive",
+                    },
                 ],
                 "edges": [],
             }
@@ -281,10 +375,30 @@ fixtures = {
                 "type": "diagram",
                 "kind": "timeline",
                 "nodes": [
-                    {"id": "q1", "label": "Q1 Launch", "sublabel": "Beta rollout", "emphasis": "primary"},
-                    {"id": "q2", "label": "Q2 Scale", "sublabel": "Multi-region setup", "emphasis": "accent"},
-                    {"id": "q3", "label": "Q3 Enterprise", "sublabel": "SSO & RBAC", "emphasis": "positive"},
-                    {"id": "q4", "label": "Q4 Automation", "sublabel": "Self-healing jobs", "emphasis": "normal"},
+                    {
+                        "id": "q1",
+                        "label": "Q1 Launch",
+                        "sublabel": "Beta rollout",
+                        "emphasis": "primary",
+                    },
+                    {
+                        "id": "q2",
+                        "label": "Q2 Scale",
+                        "sublabel": "Multi-region setup",
+                        "emphasis": "accent",
+                    },
+                    {
+                        "id": "q3",
+                        "label": "Q3 Enterprise",
+                        "sublabel": "SSO & RBAC",
+                        "emphasis": "positive",
+                    },
+                    {
+                        "id": "q4",
+                        "label": "Q4 Automation",
+                        "sublabel": "Self-healing jobs",
+                        "emphasis": "normal",
+                    },
                 ],
                 "edges": [],
             }
@@ -305,12 +419,42 @@ fixtures = {
                     {"id": "rolling", "label": "Rolling Update"},
                 ],
                 "nodes": [
-                    {"id": "c1", "label": "Low Risk Exposure", "group_id": "canary", "emphasis": "positive"},
-                    {"id": "c2", "label": "Requires Traffic Splitter", "group_id": "canary", "emphasis": "muted"},
-                    {"id": "bg1", "label": "Instant Rollback", "group_id": "bluegreen", "emphasis": "positive"},
-                    {"id": "bg2", "label": "2x Infrastructure Cost", "group_id": "bluegreen", "emphasis": "negative"},
-                    {"id": "r1", "label": "Minimal Overhead", "group_id": "rolling", "emphasis": "normal"},
-                    {"id": "r2", "label": "Mixed Version Window", "group_id": "rolling", "emphasis": "accent"},
+                    {
+                        "id": "c1",
+                        "label": "Low Risk Exposure",
+                        "group_id": "canary",
+                        "emphasis": "positive",
+                    },
+                    {
+                        "id": "c2",
+                        "label": "Requires Traffic Splitter",
+                        "group_id": "canary",
+                        "emphasis": "muted",
+                    },
+                    {
+                        "id": "bg1",
+                        "label": "Instant Rollback",
+                        "group_id": "bluegreen",
+                        "emphasis": "positive",
+                    },
+                    {
+                        "id": "bg2",
+                        "label": "2x Infrastructure Cost",
+                        "group_id": "bluegreen",
+                        "emphasis": "negative",
+                    },
+                    {
+                        "id": "r1",
+                        "label": "Minimal Overhead",
+                        "group_id": "rolling",
+                        "emphasis": "normal",
+                    },
+                    {
+                        "id": "r2",
+                        "label": "Mixed Version Window",
+                        "group_id": "rolling",
+                        "emphasis": "accent",
+                    },
                 ],
                 "edges": [],
             }
@@ -326,13 +470,33 @@ fixtures = {
                 "type": "diagram",
                 "kind": "mindmap",
                 "nodes": [
-                    {"id": "root", "label": "System Quality", "shape": "ellipse", "emphasis": "primary"},
+                    {
+                        "id": "root",
+                        "label": "System Quality",
+                        "shape": "ellipse",
+                        "emphasis": "primary",
+                    },
                     {"id": "rel", "label": "Reliability", "shape": "rounded", "emphasis": "accent"},
                     {"id": "sec", "label": "Security", "shape": "rounded", "emphasis": "positive"},
-                    {"id": "perf", "label": "Performance", "shape": "rounded", "emphasis": "normal"},
-                    {"id": "rel_ha", "label": "High Availability", "shape": "rect", "emphasis": "muted"},
+                    {
+                        "id": "perf",
+                        "label": "Performance",
+                        "shape": "rounded",
+                        "emphasis": "normal",
+                    },
+                    {
+                        "id": "rel_ha",
+                        "label": "High Availability",
+                        "shape": "rect",
+                        "emphasis": "muted",
+                    },
                     {"id": "sec_auth", "label": "Zero Trust", "shape": "rect", "emphasis": "muted"},
-                    {"id": "perf_lat", "label": "Low Latency", "shape": "rect", "emphasis": "muted"},
+                    {
+                        "id": "perf_lat",
+                        "label": "Low Latency",
+                        "shape": "rect",
+                        "emphasis": "muted",
+                    },
                 ],
                 "edges": [
                     {"source": "root", "target": "rel"},
@@ -356,7 +520,12 @@ fixtures = {
                 "kind": "flow",
                 "direction": "LR",
                 "nodes": [
-                    {"id": "solo", "label": "Autonomous Agent", "shape": "rounded", "emphasis": "primary"}
+                    {
+                        "id": "solo",
+                        "label": "Autonomous Agent",
+                        "shape": "rounded",
+                        "emphasis": "primary",
+                    }
                 ],
                 "edges": [],
             }
@@ -377,9 +546,7 @@ fixtures = {
                     {"id": "b", "label": "Cluster B", "shape": "rounded", "emphasis": "accent"},
                     {"id": "c", "label": "Isolated Node", "shape": "rounded", "emphasis": "muted"},
                 ],
-                "edges": [
-                    {"source": "a", "target": "b"}
-                ],
+                "edges": [{"source": "a", "target": "b"}],
             }
         ],
     },
@@ -394,7 +561,12 @@ fixtures = {
                 "kind": "flow",
                 "direction": "LR",
                 "nodes": [
-                    {"id": "ctrl", "label": "Controller", "shape": "rounded", "emphasis": "primary"},
+                    {
+                        "id": "ctrl",
+                        "label": "Controller",
+                        "shape": "rounded",
+                        "emphasis": "primary",
+                    },
                     {"id": "act", "label": "Actuator", "shape": "rounded", "emphasis": "accent"},
                 ],
                 "edges": [
@@ -418,9 +590,7 @@ fixtures = {
                     {"id": f"n{i}", "label": f"Node {i}", "shape": "rounded", "emphasis": "normal"}
                     for i in range(16)
                 ],
-                "edges": [
-                    {"source": f"n{i}", "target": f"n{i+1}"} for i in range(15)
-                ],
+                "edges": [{"source": f"n{i}", "target": f"n{i + 1}"} for i in range(15)],
             }
         ],
     },
@@ -450,9 +620,7 @@ fixtures = {
                         "emphasis": "accent",
                     },
                 ],
-                "edges": [
-                    {"source": "step1", "target": "step2", "label": "replicate"}
-                ],
+                "edges": [{"source": "step1", "target": "step2", "label": "replicate"}],
             }
         ],
     },

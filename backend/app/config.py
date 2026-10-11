@@ -12,11 +12,22 @@ class Settings(BaseSettings):
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
     MAX_UPLOAD_MB: int = 25
 
-    # LLM placeholders
-    LLM_MODEL_PLANNER: str = "gemini-2.0-flash"
-    LLM_MODEL_SLIDE: str = "gemini-2.0-flash"
-    LLM_MODEL_EDIT: str = "gemini-2.0-flash"
-    LLM_MODEL_VISION: str = "gemini-2.0-flash"
+    # LLM Settings (any LiteLLM model string)
+    LLM_MODEL_PLANNER: str = "anthropic/claude-3-5-sonnet-20241022"
+    LLM_MODEL_SLIDE: str = "anthropic/claude-3-5-sonnet-20241022"
+    LLM_MODEL_EDIT: str = "anthropic/claude-3-5-sonnet-20241022"
+    LLM_MODEL_VISION: str = "anthropic/claude-3-5-sonnet-20241022"
+    LLM_TIMEOUT_S: int = 120
+    FAKE_LLM: int = 0
+
+    # Job & Ingest Settings
+    JOB_CONCURRENCY: int = 4
+    MAX_RESOURCE_CHARS: int = 60000
+
+    # Optional Provider API Keys
+    ANTHROPIC_API_KEY: str | None = None
+    GEMINI_API_KEY: str | None = None
+    OPENAI_API_KEY: str | None = None
 
     model_config = SettingsConfigDict(
         env_file=(".env", "../.env"),

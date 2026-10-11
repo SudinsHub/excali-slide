@@ -183,5 +183,164 @@ def validate_ir(ir: SlideIR, settings: DeckSettings | None = None) -> list[IRIss
 ---
 
 ### Ready for Next Step
-Pass 2 is complete and all acceptance criteria are met. The repository is ready to proceed to **Pass 3: LLM Integration & Generator Pipelines** (`app/llm`, generation prompts, and repair loop).
+Pass 2 is complete and all acceptance criteria are met.
+
+---
+
+## Pass 3: Generation Pipeline (Completed)
+
+### 1. Architecture Overview
+The generation pipeline implements an end-to-end AI workflow from raw documents to editable Excalidraw slides:
+```
+[User Brief + Notes (PDF, DOCX, PPTX, MD, TXT, Images)]
+                         │
+                         ▼
+             app/ingest/parsers.py
+  (Text extraction, Image extraction & SHA-1 dedupe, <=1600px downscaling)
+                         │
+                         ▼
+             app/llm/pipeline/plan.py
+   (Jinja2 prompt + structured_call -> Plan Pydantic schema)
+                         │
+                         ▼
+        User Review & Outline Editing (PlanStep.tsx)
+  (Reorder slides, edit key points, change diagram kinds, pick images)
+                         │
+                         ▼
+                 Plan Approval
+                         │
+                         ▼
+               Postgres Job Queue
+  (Atomic claim CTE FOR UPDATE SKIP LOCKED, parallel workers)
+                         │
+                         ▼
+             app/llm/pipeline/slide.py
+   (SlideIR generation -> Quality Gate repair loop -> Compiler)
+                         │
+                         ▼
+               Live SSE Event Stream
+   (Snapshot on connect, 700ms delta polling for deck, slides, jobs, resources)
+                         │
+                         ▼
+        Deck Workspace (Excalidraw canvas, version history, export)
+```
+
+### 2. How to Run (API + Worker + Frontend)
+```bash
+# Start all core services in background (Postgres, API backend, Frontend)
+docker compose up -d
+
+# Start the background pipeline worker
+docker compose up -d worker
+
+# Apply any pending migrations
+make migrate
+
+# Run full test suites
+make test-backend   # 50/50 tests passing (pytest in Docker)
+make test-frontend  # 12/12 tests passing (Vitest in Docker)
+make lint           # Ruff (backend) & tsc (frontend) clean
+```
+
+### 3. Environment Variables
+Added to `.env.example` and `app/config.py`:
+* `FAKE_LLM`: `0` for live LiteLLM provider, `1` for deterministic offline testing and demo mode.
+* `LLM_MODEL_PLANNER`: Model string for planner (e.g. `anthropic/claude-3-7-sonnet`, `gemini/gemini-2.5-pro`, `gpt-4o`).
+* `LLM_MODEL_SLIDE`: Model string for slide IR generation.
+* `LLM_MODEL_EDIT`: Model string for slide revisions (Pass 4).
+* `LLM_MODEL_VISION`: Model string for image captioning.
+* `JOB_CONCURRENCY`: Worker concurrency limit (default: `4`).
+* `MAX_RESOURCE_CHARS`: Character budget cap for ingested document text (default: `60000`).
+* `LLM_TIMEOUT_S`: Request timeout for LiteLLM calls (default: `120`).
+
+### 4. Sample Pipeline Artifacts
+
+#### Sample Plan (`Plan` IR):
+```json
+{
+  "title": "Modern Distributed Microservices Architecture",
+  "theme": "dark",
+  "target_slide_count": 3,
+  "slides": [
+    {
+      "key": "s1",
+      "position": 0,
+      "title": "Modern Distributed Systems",
+      "layout": "cover",
+      "goal": "Introduce the distributed systems paradigm",
+      "key_points": ["Scalability", "Fault tolerance", "High availability"],
+      "image_ids": []
+    },
+    {
+      "key": "s2",
+      "position": 1,
+      "title": "Event-Driven Pipeline Architecture",
+      "layout": "diagram",
+      "diagram": {
+        "kind": "flow",
+        "description": "Client requests flow through API Gateway to Event Bus and Processing Workers"
+      },
+      "goal": "Illustrate asynchronous decoupled message processing",
+      "key_points": ["Decoupled services", "Durable queues"],
+      "image_ids": []
+    },
+    {
+      "key": "s3",
+      "position": 2,
+      "title": "Key Reliability Takeaways",
+      "layout": "closing",
+      "goal": "Summarize architecture benefits",
+      "key_points": ["Zero single point of failure", "Observable tracing"],
+      "image_ids": []
+    }
+  ]
+}
+```
+
+#### Sample Slide IR (`SlideIR` with flow diagram):
+```json
+{
+  "layout": "diagram",
+  "title": "Event-Driven Pipeline Architecture",
+  "kicker": "SYSTEM ARCHITECTURE",
+  "blocks": [
+    {
+      "type": "diagram",
+      "diagram": {
+        "kind": "flow",
+        "nodes": [
+          {"id": "n1", "label": "Client Apps", "role": "accent", "shape": "rectangle"},
+          {"id": "n2", "label": "API Gateway", "role": "primary", "shape": "rectangle"},
+          {"id": "n3", "label": "Kafka Event Bus", "role": "muted", "shape": "rectangle"},
+          {"id": "n4", "label": "Worker Fleet", "role": "positive", "shape": "rectangle"}
+        ],
+        "edges": [
+          {"from_node": "n1", "to_node": "n2", "label": "HTTPS"},
+          {"from_node": "n2", "to_node": "n3", "label": "Produce"},
+          {"from_node": "n3", "to_node": "n4", "label": "Consume"}
+        ]
+      }
+    }
+  ]
+}
+```
+
+### 5. Known Weaknesses & Prompt Tuning Notes
+- **JSON Schema Strictness Across Providers**: Certain LiteLLM providers reject complex `json_schema` definitions with `additionalProperties: false` or nested definitions. `LiteLLMClient` incorporates an automatic fallback that injects the schema directly into the prompt system message if the provider raises a schema error.
+- **Microsecond Clock Skew in SSE Polling**: In rapid programmatic mutations, testing timestamp comparisons (`updated_at > last_seen`) requires microsecond precision or clean generator teardown to avoid false idle ticks.
+- **Worker Reaping vs Concurrency**: Worker reaps stale jobs older than 90 seconds. In long LLM generation calls (`LLM_TIMEOUT_S=120`), heartbeats must tick regularly (every 15s) to prevent the reaper from prematurely claiming active long-running calls.
+
+### 6. Test Suite & Verification
+- **Backend**: **50/50 integration and unit tests passing** (`pytest` in Docker).
+  - `test_queue.py`: Atomic CTE claims, exponential backoff, retry exhaustion, reaper recovery.
+  - `test_ingest.py`: Sniffing magic bytes, text extractors, image deduplication, downscaling, corrupt file isolation.
+  - `test_llm_client.py`: Valid schema generation, 2-turn repair loop, schema fallback, fake LLM.
+  - `test_pipeline.py`: Plan enforcement, slide generation, compiler error repair round, failed slide isolation.
+  - `test_state_machine.py`: Full state machine (Brief -> Plan -> Approve -> Ready -> First revision snapshot).
+  - `test_sse.py`: Snapshot event emission and live delta event streaming.
+  - Legacy test suite (Pass 1 & Pass 2): 29 compiler, deck, and draft tests 100% passing.
+- **Frontend**: **12/12 Vitest tests passing** (`npm test -- --run`).
+- **Linters**:
+  - `ruff check .` & `ruff format --check .`: 0 errors.
+  - `tsc --noEmit` & `npm run build`: 0 errors, production bundle built cleanly in ~31s.
 

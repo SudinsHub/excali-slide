@@ -69,6 +69,31 @@ services:
         condition: service_healthy
     command: ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]
 
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: excali-slides-worker
+    restart: unless-stopped
+    environment:
+      ENV: dev
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/slides
+      STORAGE_DIR: /app/storage
+      JOB_CONCURRENCY: 4
+      FAKE_LLM: "1"
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    volumes:
+      - ./backend:/app
+      - /app/.venv
+      - backend_storage:/app/storage
+    depends_on:
+      postgres:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    command: ["uv", "run", "python", "-m", "app.jobs.worker"]
+
 volumes:
   postgres_data:
   backend_storage:

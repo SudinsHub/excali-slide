@@ -101,7 +101,6 @@ async def dev_apply_ir(
     }
 
 
-
 def _generate_sample_png() -> bytes:
     img = Image.new("RGBA", (640, 480), color=(240, 244, 248, 255))
     draw = ImageDraw.Draw(img)

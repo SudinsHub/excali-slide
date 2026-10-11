@@ -1,0 +1,42 @@
+Brief:
+{{ brief }}
+
+Settings:
+- Target slide count: {{ slide_count_label }}
+- Tone: {{ tone }}
+- Diagram intensity: {{ diagram_intensity }}
+- Density: {{ density }}
+- Audience: {{ audience }}
+{% if extra_instructions %}
+- Extra instructions: {{ extra_instructions }}
+{% endif %}
+
+Resources:
+{% for res in resources %}
+Resource ID: {{ res.id }}
+Filename: {{ res.filename }}
+Content:
+{{ res.text }}
+---
+{% else %}
+(No external resources uploaded)
+{% endfor %}
+
+Available Images Catalog:
+{% for img in images %}
+- Asset ID: {{ img.asset_id }}
+  Caption: {{ img.caption }}
+  Kind: {{ img.kind }}
+  Locator: {{ img.locator }}
+{% else %}
+(No images available)
+{% endfor %}
+{% if previous_plan %}
+
+Previous Plan:
+{{ previous_plan }}
+
+User Revision Feedback:
+{{ feedback }}
+Please revise the plan accordingly; keep slide keys stable where slides are retained.
+{% endif %}

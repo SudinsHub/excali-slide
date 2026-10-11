@@ -208,7 +208,9 @@ def layout_page(ir: SlideIR, ctx: CompileCtx | None = None) -> tuple[dict[str, A
                 for it in b.items
             )
             if 250.0 + total_h > 1020.0:
-                raise ValueError("text_overflow: Text content exceeds available frame height even at font 28")
+                raise ValueError(
+                    "text_overflow: Text content exceeds available frame height even at font 28"
+                )
 
         curr_y = 250.0
         for b_idx, tb in enumerate(tb_blocks):

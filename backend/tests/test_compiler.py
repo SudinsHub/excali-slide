@@ -73,7 +73,14 @@ def test_quality_gate_outside_frame():
         "frame": {"width": 1920, "height": 1080},
         "elements": [
             {"type": "frame", "id": "slide-frame", "width": 1920, "height": 1080},
-            {"type": "rectangle", "id": "out_of_bounds", "x": 1900, "y": 1000, "width": 100, "height": 100},
+            {
+                "type": "rectangle",
+                "id": "out_of_bounds",
+                "x": 1900,
+                "y": 1000,
+                "width": 100,
+                "height": 100,
+            },
         ],
     }
     issues = check_quality(bad_skeleton)
@@ -100,7 +107,15 @@ def test_quality_gate_font_too_small():
         "frame": {"width": 1920, "height": 1080},
         "elements": [
             {"type": "frame", "id": "slide-frame", "width": 1920, "height": 1080},
-            {"type": "text", "id": "tiny_text", "x": 200, "y": 300, "width": 100, "height": 40, "fontSize": 18},
+            {
+                "type": "text",
+                "id": "tiny_text",
+                "x": 200,
+                "y": 300,
+                "width": 100,
+                "height": 40,
+                "fontSize": 18,
+            },
         ],
     }
     issues = check_quality(bad_skeleton)

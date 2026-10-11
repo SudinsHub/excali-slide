@@ -37,7 +37,7 @@ def test_hypothesis_random_flow_compile(num_nodes: int, labels: list[str]):
 
     edges = []
     for i in range(num_nodes - 1):
-        edges.append(Edge(source=f"n{i}", target=f"n{i+1}"))
+        edges.append(Edge(source=f"n{i}", target=f"n{i + 1}"))
 
     ir = SlideIR(
         schema_version=1,

@@ -40,9 +40,7 @@ def budgets_for(settings: DeckSettings | None = None) -> Budgets:
     density = settings.density
     intensity = settings.diagram_intensity
 
-    max_nodes, bullets, words_per_bullet = DENSITY_MAP.get(
-        density, (12, 4, 12)
-    )
+    max_nodes, bullets, words_per_bullet = DENSITY_MAP.get(density, (12, 4, 12))
     diagram_share = DIAGRAM_SHARE_MAP.get(intensity, 0.50)
 
     return Budgets(

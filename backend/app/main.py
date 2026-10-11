@@ -9,6 +9,10 @@ from app.api.assets import assets_router, deck_assets_router
 from app.api.decks import router as decks_router
 from app.api.dev import router as dev_router
 from app.api.drafts import router as drafts_router
+from app.api.events import router as events_router
+from app.api.jobs import router as jobs_router
+from app.api.plans import router as plans_router
+from app.api.resources import router as resources_router
 from app.api.slides import deck_slides_router, slides_router
 from app.api.versions import router as versions_router
 from app.config import settings
@@ -75,6 +79,10 @@ app.include_router(drafts_router, prefix=api_prefix)
 app.include_router(versions_router, prefix=api_prefix)
 app.include_router(deck_assets_router, prefix=api_prefix)
 app.include_router(assets_router, prefix=api_prefix)
+app.include_router(resources_router, prefix=api_prefix)
+app.include_router(plans_router, prefix=api_prefix)
+app.include_router(jobs_router, prefix=api_prefix)
+app.include_router(events_router, prefix=api_prefix)
 
 if settings.ENV == "dev":
     app.include_router(dev_router, prefix=api_prefix)

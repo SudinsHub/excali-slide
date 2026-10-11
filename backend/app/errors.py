@@ -58,6 +58,30 @@ class PayloadTooLargeError(AppError):
         )
 
 
+class GenerationError(AppError):
+    def __init__(
+        self,
+        message: str = "Slide generation failed",
+        issues: list[Any] | None = None,
+        details: dict[str, Any] | None = None,
+    ):
+        det = details or {}
+        if issues:
+            det["issues"] = [
+                iss
+                if isinstance(iss, dict)
+                else (iss.model_dump() if hasattr(iss, "model_dump") else str(iss))
+                for iss in issues
+            ]
+        super().__init__(
+            code="generation_failed",
+            message=message,
+            status_code=422,
+            details=det,
+        )
+        self.issues = issues or []
+
+
 async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
     return JSONResponse(
         status_code=exc.status_code,

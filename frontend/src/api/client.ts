@@ -212,4 +212,88 @@ export const api = {
     });
     return handleResponse<any>(res);
   },
+
+  // --- Pass 3 Endpoints ---
+
+  // Resources
+  async uploadResources(deckId: string, files: File[]): Promise<any[]> {
+    const formData = new FormData();
+    files.forEach((file) => formData.append('files', file));
+    const res = await fetch(`${API_BASE}/decks/${deckId}/resources`, {
+      method: 'POST',
+      body: formData,
+    });
+    return handleResponse<any[]>(res);
+  },
+
+  async getResources(deckId: string): Promise<any[]> {
+    const res = await fetch(`${API_BASE}/decks/${deckId}/resources`);
+    return handleResponse<any[]>(res);
+  },
+
+  async deleteResource(resourceId: string): Promise<void> {
+    const res = await fetch(`${API_BASE}/resources/${resourceId}`, {
+      method: 'DELETE',
+    });
+    return handleResponse<void>(res);
+  },
+
+  // Plan
+  async generatePlan(deckId: string): Promise<{ job_id: string; status: string }> {
+    const res = await fetch(`${API_BASE}/decks/${deckId}/plan/generate`, {
+      method: 'POST',
+    });
+    return handleResponse<{ job_id: string; status: string }>(res);
+  },
+
+  async getPlan(deckId: string): Promise<any> {
+    const res = await fetch(`${API_BASE}/decks/${deckId}/plan`);
+    return handleResponse<any>(res);
+  },
+
+  async updatePlan(deckId: string, plan: any): Promise<any> {
+    const res = await fetch(`${API_BASE}/decks/${deckId}/plan`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(plan),
+    });
+    return handleResponse<any>(res);
+  },
+
+  async regeneratePlan(deckId: string, feedback?: string): Promise<{ job_id: string; status: string }> {
+    const res = await fetch(`${API_BASE}/decks/${deckId}/plan/regenerate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(feedback ? { feedback } : {}),
+    });
+    return handleResponse<{ job_id: string; status: string }>(res);
+  },
+
+  async approvePlan(deckId: string): Promise<{ status: string; slides_count: number }> {
+    const res = await fetch(`${API_BASE}/decks/${deckId}/plan/approve`, {
+      method: 'POST',
+    });
+    return handleResponse<{ status: string; slides_count: number }>(res);
+  },
+
+  // Slide regeneration
+  async regenerateSlide(slideId: string): Promise<{ job_id: string; status: string }> {
+    const res = await fetch(`${API_BASE}/slides/${slideId}/regenerate`, {
+      method: 'POST',
+    });
+    return handleResponse<{ job_id: string; status: string }>(res);
+  },
+
+  // Jobs
+  async getJob(jobId: string): Promise<any> {
+    const res = await fetch(`${API_BASE}/jobs/${jobId}`);
+    return handleResponse<any>(res);
+  },
+
+  async cancelJob(jobId: string): Promise<{ id: string; status: string; cancel_requested: boolean }> {
+    const res = await fetch(`${API_BASE}/jobs/${jobId}/cancel`, {
+      method: 'POST',
+    });
+    return handleResponse<{ id: string; status: string; cancel_requested: boolean }>(res);
+  },
 };

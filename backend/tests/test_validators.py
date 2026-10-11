@@ -53,7 +53,10 @@ def test_cover_with_blocks_rejected():
         blocks=[TextBlock(type="text", style="bullets", items=["Item"])],
     )
     issues = validate_ir(ir)
-    assert any(i.code == "invalid_blocks" and "cover layout must not contain blocks, got 1" in i.message for i in issues)
+    assert any(
+        i.code == "invalid_blocks" and "cover layout must not contain blocks, got 1" in i.message
+        for i in issues
+    )
 
 
 def test_closing_bullet_cap():
@@ -66,7 +69,11 @@ def test_closing_bullet_cap():
         blocks=[TextBlock(type="text", style="bullets", items=["1", "2", "3", "4"])],
     )
     issues = validate_ir(ir)
-    assert any(i.code == "too_many_bullets" and "closing layout allows at most 3 bullets, got 4" in i.message for i in issues)
+    assert any(
+        i.code == "too_many_bullets"
+        and "closing layout allows at most 3 bullets, got 4" in i.message
+        for i in issues
+    )
 
 
 def test_statement_rules():
@@ -128,7 +135,11 @@ def test_timeline_node_count_constraint():
         blocks=[DiagramBlock(type="diagram", kind="timeline", nodes=nodes)],
     )
     issues = validate_ir(ir)
-    assert any(i.code == "invalid_node_count_timeline" and "timeline diagrams need 3-7 nodes, got 8" in i.message for i in issues)
+    assert any(
+        i.code == "invalid_node_count_timeline"
+        and "timeline diagrams need 3-7 nodes, got 8" in i.message
+        for i in issues
+    )
 
 
 def test_comparison_group_and_node_rules():
@@ -147,7 +158,11 @@ def test_comparison_group_and_node_rules():
         ],
     )
     issues = validate_ir(ir)
-    assert any(i.code == "invalid_group_count_comparison" and "comparison diagrams need 2-3 groups, got 1" in i.message for i in issues)
+    assert any(
+        i.code == "invalid_group_count_comparison"
+        and "comparison diagrams need 2-3 groups, got 1" in i.message
+        for i in issues
+    )
 
 
 def test_edge_references_and_no_self_loops():
@@ -169,8 +184,15 @@ def test_edge_references_and_no_self_loops():
         ],
     )
     issues = validate_ir(ir)
-    assert any(i.code == "edge_invalid_target" and "edge target 'ghost' does not exist in nodes" in i.message for i in issues)
-    assert any(i.code == "self_loop_forbidden" and "self-loop on node 'a' is forbidden" in i.message for i in issues)
+    assert any(
+        i.code == "edge_invalid_target"
+        and "edge target 'ghost' does not exist in nodes" in i.message
+        for i in issues
+    )
+    assert any(
+        i.code == "self_loop_forbidden" and "self-loop on node 'a' is forbidden" in i.message
+        for i in issues
+    )
 
 
 def test_tree_rules_hierarchy_and_mindmap():
@@ -184,7 +206,11 @@ def test_tree_rules_hierarchy_and_mindmap():
             DiagramBlock(
                 type="diagram",
                 kind="hierarchy",
-                nodes=[Node(id="r1", label="R1"), Node(id="r2", label="R2"), Node(id="c1", label="C1")],
+                nodes=[
+                    Node(id="r1", label="R1"),
+                    Node(id="r2", label="R2"),
+                    Node(id="c1", label="C1"),
+                ],
                 edges=[Edge(source="r1", target="c1")],
             )
         ],
@@ -217,7 +243,10 @@ def test_tree_rules_hierarchy_and_mindmap():
         ],
     )
     issues_mm = validate_ir(ir_deep_mindmap)
-    assert any(i.code == "mindmap_depth_exceeded" and "mindmap diagrams cap depth at 2" in i.message for i in issues_mm)
+    assert any(
+        i.code == "mindmap_depth_exceeded" and "mindmap diagrams cap depth at 2" in i.message
+        for i in issues_mm
+    )
 
 
 def test_budget_warnings_vs_hard_caps():

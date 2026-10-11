@@ -99,9 +99,9 @@ def layout_layers(
         # Down arrow to next layer if edge exists or requested
         if idx < n - 1:
             next_id = node_ids_in_order[idx + 1]
-            edge_exists = any(
-                e.source == node.id and e.target == next_id for e in block.edges
-            ) or (not block.edges)  # Default connecting arrow if no explicit edges
+            edge_exists = any(e.source == node.id and e.target == next_id for e in block.edges) or (
+                not block.edges
+            )  # Default connecting arrow if no explicit edges
             if edge_exists:
                 arrow_y = y + band_h
                 cx = band_x + band_w / 2.0

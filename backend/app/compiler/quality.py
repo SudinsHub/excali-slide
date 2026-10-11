@@ -57,7 +57,12 @@ def check_quality(
                         message=f"Element '{el_id}' ({x:.0f},{y:.0f},{w:.0f},{h:.0f}) extends outside 1920x1080 frame",
                     )
                 )
-            elif x < clearance or y < clearance or r_right > frame_w - clearance or r_bottom > frame_h - clearance:
+            elif (
+                x < clearance
+                or y < clearance
+                or r_right > frame_w - clearance
+                or r_bottom > frame_h - clearance
+            ):
                 issues.append(
                     QualityIssue(
                         code="clearance_violation",
@@ -105,9 +110,18 @@ def check_quality(
                         )
                     )
 
-        if el_type in ("rectangle", "ellipse", "diamond") and not el_id.startswith("grp_") and not el_id.startswith("el_bg_"):
+        if (
+            el_type in ("rectangle", "ellipse", "diamond")
+            and not el_id.startswith("grp_")
+            and not el_id.startswith("el_bg_")
+        ):
             rect_elements.append(el)
-        elif el_type == "text" and not el_id.startswith("grp_label_") and not el_id.startswith("el_txt_") and el_id != "quote_glyph":
+        elif (
+            el_type == "text"
+            and not el_id.startswith("grp_label_")
+            and not el_id.startswith("el_txt_")
+            and el_id != "quote_glyph"
+        ):
             # Exclude labels inside shapes, headers, and decorative glyphs
             rect_elements.append(el)
         elif el_type == "arrow":

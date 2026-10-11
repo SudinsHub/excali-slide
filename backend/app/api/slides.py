@@ -1,4 +1,5 @@
 import uuid
+from datetime import UTC
 
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -64,3 +65,32 @@ async def duplicate_single_slide(
 ) -> SlideDetail:
     new_slide = await duplicate_slide(db, slide_id)
     return await get_slide_detail(db, new_slide.id)
+
+
+@slides_router.post("/{slide_id}/regenerate", status_code=status.HTTP_202_ACCEPTED)
+async def regenerate_single_slide(
+    slide_id: uuid.UUID, db: AsyncSession = Depends(get_db)
+) -> dict[str, str]:
+    from datetime import datetime
+
+    from app.errors import NotFoundError
+    from app.jobs.queue import enqueue
+    from app.models.slide import Slide
+
+    slide = await db.get(Slide, slide_id)
+    if not slide or slide.deleted_at is not None:
+        raise NotFoundError("Slide not found")
+
+    slide.status = "queued"
+    slide.error = None
+    slide.updated_at = datetime.now(UTC)
+
+    job = await enqueue(
+        db,
+        kind="generate_slide",
+        deck_id=slide.deck_id,
+        slide_id=slide.id,
+        priority=6,
+    )
+    await db.commit()
+    return {"job_id": str(job.id), "status": "queued"}
