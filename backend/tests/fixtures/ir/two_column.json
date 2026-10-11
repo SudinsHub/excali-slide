@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "slide_key": "s5",
+  "layout": "two_column",
+  "title": "Monolith vs Microservices",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "bullets",
+      "heading": "Monolithic Approach",
+      "items": [
+        "Single codebase and deployment unit",
+        "Simple local testing and debugging",
+        "Tight coupling impedes autonomous scaling"
+      ]
+    },
+    {
+      "type": "text",
+      "style": "bullets",
+      "heading": "Distributed Services",
+      "items": [
+        "Independently deployable bounded contexts",
+        "Targeted autoscaling of hot services",
+        "Operational overhead requiring robust observability"
+      ]
+    }
+  ]
+}

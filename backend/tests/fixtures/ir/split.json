@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "slide_key": "s6",
+  "layout": "split",
+  "title": "Event-Driven Processing",
+  "text_side": "left",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "bullets",
+      "heading": "Workflow Overview",
+      "items": [
+        "Incoming requests produce audit events",
+        "Stream processor enriches payload",
+        "Analytics engine ingests in real-time"
+      ]
+    },
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "ingress",
+          "label": "API Ingress",
+          "shape": "rounded",
+          "emphasis": "primary"
+        },
+        {
+          "id": "bus",
+          "label": "Event Bus",
+          "shape": "rect",
+          "emphasis": "accent"
+        },
+        {
+          "id": "sink",
+          "label": "Data Sink",
+          "shape": "rounded",
+          "emphasis": "positive"
+        }
+      ],
+      "edges": [
+        {
+          "source": "ingress",
+          "target": "bus",
+          "label": "publish"
+        },
+        {
+          "source": "bus",
+          "target": "sink",
+          "label": "consume"
+        }
+      ]
+    }
+  ]
+}

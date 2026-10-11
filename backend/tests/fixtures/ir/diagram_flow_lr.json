@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "slide_key": "s9",
+  "layout": "diagram",
+  "title": "Data Ingestion Pipeline",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "source",
+          "label": "Raw Sources",
+          "shape": "rounded",
+          "emphasis": "normal"
+        },
+        {
+          "id": "parser",
+          "label": "Format Parser",
+          "shape": "rounded",
+          "emphasis": "primary"
+        },
+        {
+          "id": "validator",
+          "label": "Schema Gate",
+          "shape": "diamond",
+          "emphasis": "accent"
+        },
+        {
+          "id": "db",
+          "label": "Warehouse",
+          "shape": "rounded",
+          "emphasis": "positive"
+        }
+      ],
+      "edges": [
+        {
+          "source": "source",
+          "target": "parser"
+        },
+        {
+          "source": "parser",
+          "target": "validator"
+        },
+        {
+          "source": "validator",
+          "target": "db",
+          "label": "valid"
+        }
+      ]
+    }
+  ]
+}

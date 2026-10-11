@@ -1,0 +1,237 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "n_source",
+        "n_parser",
+        "n_validator",
+        "n_db",
+        "e_source_parser_0",
+        "e_parser_validator_1",
+        "e_validator_db_2",
+        "el_bg_e_validator_db_2",
+        "el_txt_e_validator_db_2"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Data Ingestion Pipeline",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Data Ingestion Pipeline",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_source",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "Raw Sources"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 235,
+      "x": 341.0,
+      "y": 584.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_parser",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "Format Parser"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 268,
+      "x": 636.0,
+      "y": 584.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 108,
+      "id": "n_validator",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "Schema Gate"
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "diamond",
+      "width": 352,
+      "x": 964.0,
+      "y": 566.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_db",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Warehouse"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 203,
+      "x": 1376.0,
+      "y": 584.0
+    },
+    {
+      "end": {
+        "id": "n_parser"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_source_parser_0",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          311.5,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_source"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 311.5,
+      "x": 458.5,
+      "y": 620.0
+    },
+    {
+      "end": {
+        "id": "n_validator"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_parser_validator_1",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          370.0,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_parser"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 370.0,
+      "x": 770.0,
+      "y": 620.0
+    },
+    {
+      "end": {
+        "id": "n_db"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_validator_db_2",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          337.5,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_validator"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 337.5,
+      "x": 1140.0,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "height": 38.0,
+      "id": "el_bg_e_validator_db_2",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "transparent",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 85.6,
+      "x": 1266.0,
+      "y": 601.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "el_txt_e_validator_db_2",
+      "strokeColor": "#1e1e1e",
+      "text": "valid",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 69.6,
+      "x": 1274.0,
+      "y": 605.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

@@ -1,0 +1,66 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "b0_i0",
+        "b0_i1"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "A Detailed Investigation Into Enterprise Cloud Resilience Standards",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 160.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "A Detailed Investigation Into Enterprise\nCloud Resilience Standards",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i0",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Guaranteed recovery point objectives under 30 seconds",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1299.2,
+      "x": 140.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i1",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Redundant geo-distributed data plane routing",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1090.4,
+      "x": 140.0,
+      "y": 328.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

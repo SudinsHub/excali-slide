@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "slide_key": "s19",
+  "layout": "diagram",
+  "title": "Bidirectional Feedback Flow",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "ctrl",
+          "label": "Controller",
+          "shape": "rounded",
+          "emphasis": "primary"
+        },
+        {
+          "id": "act",
+          "label": "Actuator",
+          "shape": "rounded",
+          "emphasis": "accent"
+        }
+      ],
+      "edges": [
+        {
+          "source": "ctrl",
+          "target": "act",
+          "label": "command"
+        },
+        {
+          "source": "act",
+          "target": "ctrl",
+          "label": "telemetry"
+        }
+      ]
+    }
+  ]
+}

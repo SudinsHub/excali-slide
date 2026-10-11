@@ -1,0 +1,66 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "quote_glyph",
+        "statement_text"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Core Philosophy",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "title",
+      "strokeColor": "#868e96",
+      "text": "Core Philosophy",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 100.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 120.0,
+      "height": 90.0,
+      "id": "quote_glyph",
+      "strokeColor": "#adb5bd",
+      "text": "\u201c",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 80.0,
+      "x": 170.0,
+      "y": 320.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 240.0,
+      "id": "statement_text",
+      "strokeColor": "#1e1e1e",
+      "text": "Simplicity is prerequisite for\nreliability. Complex systems always\nfail in complex ways.",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 1400.0,
+      "x": 260.0,
+      "y": 420.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

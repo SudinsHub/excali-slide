@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "slide_key": "s3",
+  "layout": "statement",
+  "title": "Core Philosophy",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "quote",
+      "items": [
+        "Simplicity is prerequisite for reliability. Complex systems always fail in complex ways."
+      ]
+    }
+  ]
+}

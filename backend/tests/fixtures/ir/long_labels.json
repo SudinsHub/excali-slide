@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "slide_key": "s21",
+  "layout": "diagram",
+  "title": "Comprehensive Workflow Specification",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "step1",
+          "label": "Initialize Storage Cluster",
+          "sublabel": "Zero-knowledge encryption keys",
+          "shape": "rounded",
+          "emphasis": "primary"
+        },
+        {
+          "id": "step2",
+          "label": "Propagate Distributed Replicas",
+          "sublabel": "Multi-region sync consensus",
+          "shape": "rounded",
+          "emphasis": "accent"
+        }
+      ],
+      "edges": [
+        {
+          "source": "step1",
+          "target": "step2",
+          "label": "replicate"
+        }
+      ]
+    }
+  ]
+}

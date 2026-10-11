@@ -1,0 +1,215 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "split_text_heading",
+        "split_t_i0",
+        "split_t_i1",
+        "split_t_i2",
+        "n_scan",
+        "n_join",
+        "n_out",
+        "e_scan_join_0",
+        "e_join_out_1"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Query Execution Plan",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Query Execution Plan",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 38.0,
+      "height": 47.5,
+      "id": "split_text_heading",
+      "strokeColor": "#f08c00",
+      "text": "Optimization Steps",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 1160.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 34.0,
+      "height": 42.5,
+      "id": "split_t_i0",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Cost-based index selection",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 1160.0,
+      "y": 317.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 34.0,
+      "height": 42.5,
+      "id": "split_t_i1",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Hash join over nested loops",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 1160.0,
+      "y": 380.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 34.0,
+      "height": 85.0,
+      "id": "split_t_i2",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Streaming partial\naggregations",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 1160.0,
+      "y": 442.5
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_scan",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "Index Scan"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 219,
+      "x": 500.5,
+      "y": 447.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_join",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "Hash Join"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 203,
+      "x": 508.5,
+      "y": 579.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_out",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Output"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 160,
+      "x": 530.0,
+      "y": 711.0
+    },
+    {
+      "end": {
+        "id": "n_join"
+      },
+      "endArrowhead": "arrow",
+      "height": 132.0,
+      "id": "e_scan_join_0",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.0,
+          132.0
+        ]
+      ],
+      "start": {
+        "id": "n_scan"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 0.0,
+      "x": 610.0,
+      "y": 483.0
+    },
+    {
+      "end": {
+        "id": "n_out"
+      },
+      "endArrowhead": "arrow",
+      "height": 132.0,
+      "id": "e_join_out_1",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.0,
+          132.0
+        ]
+      ],
+      "start": {
+        "id": "n_join"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 0.0,
+      "x": 610.0,
+      "y": 615.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

@@ -26,6 +26,15 @@ from app.db import get_db
 from app.main import app
 
 
+def pytest_addoption(parser):
+    parser.addoption(
+        "--update-golden",
+        action="store_true",
+        default=False,
+        help="Update golden skeleton snapshot files",
+    )
+
+
 @pytest.fixture(scope="session", autouse=True)
 def run_migrations():
     backend_dir = Path(__file__).parent.parent

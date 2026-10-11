@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "slide_key": "s7",
+  "layout": "image_text",
+  "title": "User Experience Benchmark",
+  "image_side": "left",
+  "blocks": [
+    {
+      "type": "image",
+      "asset_id": "asset_sample_chart_1",
+      "caption": "Quarterly Latency Distribution (p99)"
+    },
+    {
+      "type": "text",
+      "style": "bullets",
+      "items": [
+        "Sub-100ms response times maintained across regions",
+        "Zero dropped transactions during traffic spikes",
+        "Linear caching efficiency achieved via edge proxies"
+      ]
+    }
+  ]
+}

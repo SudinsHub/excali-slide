@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "slide_key": "s4",
+  "layout": "text",
+  "title": "System Design Principles",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "bullets",
+      "items": [
+        "Isolate stateful components from stateless web tier",
+        "Design for failure with circuit breakers and timeouts",
+        "Adopt asynchronous messaging for high decoupling",
+        "Instrument every service with end-to-end tracing"
+      ]
+    }
+  ]
+}

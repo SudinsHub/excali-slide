@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "slide_key": "s14",
+  "layout": "diagram",
+  "title": "Engineering Roadmap 2026",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "timeline",
+      "nodes": [
+        {
+          "id": "q1",
+          "label": "Q1 Launch",
+          "sublabel": "Beta rollout",
+          "emphasis": "primary"
+        },
+        {
+          "id": "q2",
+          "label": "Q2 Scale",
+          "sublabel": "Multi-region setup",
+          "emphasis": "accent"
+        },
+        {
+          "id": "q3",
+          "label": "Q3 Enterprise",
+          "sublabel": "SSO & RBAC",
+          "emphasis": "positive"
+        },
+        {
+          "id": "q4",
+          "label": "Q4 Automation",
+          "sublabel": "Self-healing jobs",
+          "emphasis": "normal"
+        }
+      ],
+      "edges": []
+    }
+  ]
+}

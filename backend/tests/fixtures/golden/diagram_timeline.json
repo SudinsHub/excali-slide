@@ -1,0 +1,317 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "timeline_axis",
+        "marker_q1",
+        "n_q1",
+        "sub_q1",
+        "tick_q1",
+        "marker_q2",
+        "n_q2",
+        "sub_q2",
+        "tick_q2",
+        "marker_q3",
+        "n_q3",
+        "sub_q3",
+        "tick_q3",
+        "marker_q4",
+        "n_q4",
+        "sub_q4",
+        "tick_q4"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Engineering Roadmap 2026",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Engineering Roadmap 2026",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "height": 0.0,
+      "id": "timeline_axis",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1320.0,
+          0.0
+        ]
+      ],
+      "strokeColor": "#868e96",
+      "strokeWidth": 3,
+      "type": "line",
+      "width": 1320.0,
+      "x": 300.0,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 32.0,
+      "id": "marker_q1",
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "ellipse",
+      "width": 32.0,
+      "x": 284.0,
+      "y": 604.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "n_q1",
+      "strokeColor": "#1971c2",
+      "text": "Q1 Launch",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 140.0,
+      "y": 513.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_q1",
+      "strokeColor": "#868e96",
+      "text": "Beta rollout",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 140.0,
+      "y": 554.0
+    },
+    {
+      "height": 20.0,
+      "id": "tick_q1",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -20.0
+        ]
+      ],
+      "strokeColor": "#adb5bd",
+      "strokeWidth": 1,
+      "type": "line",
+      "width": 0.0,
+      "x": 300.0,
+      "y": 604.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 32.0,
+      "id": "marker_q2",
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "ellipse",
+      "width": 32.0,
+      "x": 724.0,
+      "y": 604.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "n_q2",
+      "strokeColor": "#f08c00",
+      "text": "Q2 Scale",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 580.0,
+      "y": 656.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_q2",
+      "strokeColor": "#868e96",
+      "text": "Multi-region setup",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 580.0,
+      "y": 697.0
+    },
+    {
+      "height": 20.0,
+      "id": "tick_q2",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          20.0
+        ]
+      ],
+      "strokeColor": "#adb5bd",
+      "strokeWidth": 1,
+      "type": "line",
+      "width": 0.0,
+      "x": 740.0,
+      "y": 636.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 32.0,
+      "id": "marker_q3",
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "ellipse",
+      "width": 32.0,
+      "x": 1164.0,
+      "y": 604.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "n_q3",
+      "strokeColor": "#2f9e44",
+      "text": "Q3 Enterprise",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 1020.0,
+      "y": 513.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_q3",
+      "strokeColor": "#868e96",
+      "text": "SSO & RBAC",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 1020.0,
+      "y": 554.0
+    },
+    {
+      "height": 20.0,
+      "id": "tick_q3",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -20.0
+        ]
+      ],
+      "strokeColor": "#adb5bd",
+      "strokeWidth": 1,
+      "type": "line",
+      "width": 0.0,
+      "x": 1180.0,
+      "y": 604.0
+    },
+    {
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "height": 32.0,
+      "id": "marker_q4",
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "ellipse",
+      "width": 32.0,
+      "x": 1604.0,
+      "y": 604.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "n_q4",
+      "strokeColor": "#1e1e1e",
+      "text": "Q4 Automation",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 1460.0,
+      "y": 656.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_q4",
+      "strokeColor": "#868e96",
+      "text": "Self-healing jobs",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 320.0,
+      "x": 1460.0,
+      "y": 697.0
+    },
+    {
+      "height": 20.0,
+      "id": "tick_q4",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          20.0
+        ]
+      ],
+      "strokeColor": "#adb5bd",
+      "strokeWidth": 1,
+      "type": "line",
+      "width": 0.0,
+      "x": 1620.0,
+      "y": 636.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

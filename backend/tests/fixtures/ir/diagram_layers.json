@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "slide_key": "s12",
+  "layout": "diagram",
+  "title": "Application Stack Layers",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "layers",
+      "nodes": [
+        {
+          "id": "l_ui",
+          "label": "Presentation Layer",
+          "sublabel": "React + TypeScript",
+          "emphasis": "primary"
+        },
+        {
+          "id": "l_api",
+          "label": "API Gateway Tier",
+          "sublabel": "FastAPI + REST",
+          "emphasis": "accent"
+        },
+        {
+          "id": "l_domain",
+          "label": "Business Logic Tier",
+          "sublabel": "Pure Domain Models",
+          "emphasis": "normal"
+        },
+        {
+          "id": "l_persist",
+          "label": "Persistence Tier",
+          "sublabel": "PostgreSQL + S3",
+          "emphasis": "positive"
+        }
+      ],
+      "edges": []
+    }
+  ]
+}

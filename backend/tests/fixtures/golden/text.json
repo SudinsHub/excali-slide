@@ -1,0 +1,96 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "b0_i0",
+        "b0_i1",
+        "b0_i2",
+        "b0_i3"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "System Design Principles",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "System Design Principles",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i0",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Isolate stateful components from stateless web tier",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1252.8,
+      "x": 140.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i1",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Design for failure with circuit breakers and timeouts",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1299.2,
+      "x": 140.0,
+      "y": 328.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i2",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Adopt asynchronous messaging for high decoupling",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1183.2,
+      "x": 140.0,
+      "y": 406.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i3",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Instrument every service with end-to-end tracing",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1183.2,
+      "x": 140.0,
+      "y": 484.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "slide_key": "s24",
+  "layout": "image_text",
+  "title": "Mobile App Prototype",
+  "image_side": "left",
+  "blocks": [
+    {
+      "type": "image",
+      "asset_id": "tall_mockup_asset",
+      "caption": "iOS Portrait Viewport"
+    },
+    {
+      "type": "text",
+      "style": "bullets",
+      "items": [
+        "Native gesture support with haptic feedback",
+        "Offline-first sync via SQLite local cache",
+        "Seamless dark mode and dynamic typography"
+      ]
+    }
+  ]
+}

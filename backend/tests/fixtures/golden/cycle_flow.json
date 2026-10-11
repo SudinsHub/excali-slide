@@ -1,0 +1,200 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "n_ctrl",
+        "n_act",
+        "e_ctrl_act_0",
+        "el_bg_e_ctrl_act_0",
+        "el_txt_e_ctrl_act_0",
+        "e_act_ctrl_1",
+        "el_bg_e_act_ctrl_1",
+        "el_txt_e_act_ctrl_1"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Bidirectional Feedback Flow",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Bidirectional Feedback Flow",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_ctrl",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "Controller"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 219,
+      "x": 727.5,
+      "y": 584.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_act",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "Actuator"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 186,
+      "x": 1006.5,
+      "y": 584.0
+    },
+    {
+      "end": {
+        "id": "n_act"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_ctrl_act_0",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          262.5,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_ctrl"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 262.5,
+      "x": 837.0,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "height": 38.0,
+      "id": "el_bg_e_ctrl_act_0",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "transparent",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 113.4,
+      "x": 911.5,
+      "y": 565.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "el_txt_e_ctrl_act_0",
+      "strokeColor": "#1e1e1e",
+      "text": "command",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 97.4,
+      "x": 919.5,
+      "y": 569.0
+    },
+    {
+      "end": {
+        "id": "n_ctrl"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_act_ctrl_1",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -262.5,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_act"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -262.5,
+      "x": 1099.5,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "height": 38.0,
+      "id": "el_bg_e_act_ctrl_1",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "transparent",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 141.3,
+      "x": 897.6,
+      "y": 565.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "el_txt_e_act_ctrl_1",
+      "strokeColor": "#1e1e1e",
+      "text": "telemetry",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 125.3,
+      "x": 905.6,
+      "y": 569.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

@@ -1,0 +1,108 @@
+{
+  "asset_ids": [
+    "tall_mockup_asset"
+  ],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "img_element",
+        "img_caption",
+        "it_i0",
+        "it_i1",
+        "it_i2"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Mobile App Prototype",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Mobile App Prototype",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "fileId": "tall_mockup_asset",
+      "height": 640.0,
+      "id": "img_element",
+      "type": "image",
+      "width": 320.0,
+      "x": 350.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "img_caption",
+      "strokeColor": "#868e96",
+      "text": "iOS Portrait Viewport",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 780.0,
+      "x": 120.0,
+      "y": 904.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 36.0,
+      "height": 90.0,
+      "id": "it_i0",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Native gesture support with haptic\nfeedback",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 840.0,
+      "x": 960.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 36.0,
+      "height": 90.0,
+      "id": "it_i1",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Offline-first sync via SQLite local\ncache",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 840.0,
+      "x": 960.0,
+      "y": 364.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 36.0,
+      "height": 90.0,
+      "id": "it_i2",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Seamless dark mode and dynamic\ntypography",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 840.0,
+      "x": 960.0,
+      "y": 478.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

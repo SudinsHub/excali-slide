@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "slide_key": "s26",
+  "layout": "split",
+  "title": "Query Execution Plan",
+  "text_side": "right",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "bullets",
+      "heading": "Optimization Steps",
+      "items": [
+        "Cost-based index selection",
+        "Hash join over nested loops",
+        "Streaming partial aggregations"
+      ]
+    },
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "TB",
+      "nodes": [
+        {
+          "id": "scan",
+          "label": "Index Scan",
+          "shape": "rect",
+          "emphasis": "normal"
+        },
+        {
+          "id": "join",
+          "label": "Hash Join",
+          "shape": "rounded",
+          "emphasis": "primary"
+        },
+        {
+          "id": "out",
+          "label": "Output",
+          "shape": "rounded",
+          "emphasis": "positive"
+        }
+      ],
+      "edges": [
+        {
+          "source": "scan",
+          "target": "join"
+        },
+        {
+          "source": "join",
+          "target": "out"
+        }
+      ]
+    }
+  ]
+}

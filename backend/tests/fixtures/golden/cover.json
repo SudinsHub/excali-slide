@@ -1,0 +1,76 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "title_underline",
+        "subtitle"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Modern Cloud Architecture",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 88.0,
+      "height": 110.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Modern Cloud Architecture",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 1600.0,
+      "x": 160.0,
+      "y": 345.0
+    },
+    {
+      "height": 5.0,
+      "id": "title_underline",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          606.1,
+          4.0
+        ],
+        [
+          1212.2,
+          1.0
+        ]
+      ],
+      "strokeColor": "#f08c00",
+      "strokeWidth": 4,
+      "type": "line",
+      "width": 1212.2,
+      "x": 353.9,
+      "y": 473.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "subtitle",
+      "strokeColor": "#868e96",
+      "text": "Scalable Systems and Microservices Design Patterns",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1500.0,
+      "x": 210.0,
+      "y": 509.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

@@ -1,0 +1,308 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "n_l_ui",
+        "lbl_l_ui",
+        "sub_l_ui",
+        "e_l_ui_l_api",
+        "n_l_api",
+        "lbl_l_api",
+        "sub_l_api",
+        "e_l_api_l_domain",
+        "n_l_domain",
+        "lbl_l_domain",
+        "sub_l_domain",
+        "e_l_domain_l_persist",
+        "n_l_persist",
+        "lbl_l_persist",
+        "sub_l_persist"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Application Stack Layers",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Application Stack Layers",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 120.0,
+      "id": "n_l_ui",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 344.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "lbl_l_ui",
+      "strokeColor": "#1971c2",
+      "text": "Presentation Layer",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 292.3,
+      "x": 156.0,
+      "y": 386.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_l_ui",
+      "strokeColor": "#868e96",
+      "text": "React + TypeScript",
+      "textAlign": "right",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 250.6,
+      "x": 1513.4,
+      "y": 389.0
+    },
+    {
+      "end": {
+        "id": "n_l_api"
+      },
+      "endArrowhead": "arrow",
+      "height": 24.0,
+      "id": "e_l_ui_l_api",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          24.0
+        ]
+      ],
+      "start": {
+        "id": "n_l_ui"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 0.0,
+      "x": 960.0,
+      "y": 464.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 120.0,
+      "id": "n_l_api",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 488.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "lbl_l_api",
+      "strokeColor": "#f08c00",
+      "text": "API Gateway Tier",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 259.8,
+      "x": 156.0,
+      "y": 530.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_l_api",
+      "strokeColor": "#868e96",
+      "text": "FastAPI + REST",
+      "textAlign": "right",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 194.9,
+      "x": 1569.1,
+      "y": 533.0
+    },
+    {
+      "end": {
+        "id": "n_l_domain"
+      },
+      "endArrowhead": "arrow",
+      "height": 24.0,
+      "id": "e_l_api_l_domain",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          24.0
+        ]
+      ],
+      "start": {
+        "id": "n_l_api"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 0.0,
+      "x": 960.0,
+      "y": 608.0
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 120.0,
+      "id": "n_l_domain",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 632.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "lbl_l_domain",
+      "strokeColor": "#1e1e1e",
+      "text": "Business Logic Tier",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 308.6,
+      "x": 156.0,
+      "y": 674.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_l_domain",
+      "strokeColor": "#868e96",
+      "text": "Pure Domain Models",
+      "textAlign": "right",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 250.6,
+      "x": 1513.4,
+      "y": 677.0
+    },
+    {
+      "end": {
+        "id": "n_l_persist"
+      },
+      "endArrowhead": "arrow",
+      "height": 24.0,
+      "id": "e_l_domain_l_persist",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          24.0
+        ]
+      ],
+      "start": {
+        "id": "n_l_domain"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 0.0,
+      "x": 960.0,
+      "y": 752.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 120.0,
+      "id": "n_l_persist",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 776.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 28.0,
+      "height": 35.0,
+      "id": "lbl_l_persist",
+      "strokeColor": "#2f9e44",
+      "text": "Persistence Tier",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 259.8,
+      "x": 156.0,
+      "y": 818.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "sub_l_persist",
+      "strokeColor": "#868e96",
+      "text": "PostgreSQL + S3",
+      "textAlign": "right",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 208.8,
+      "x": 1555.2,
+      "y": 821.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "slide_key": "s23",
+  "layout": "text",
+  "title": "Key Deployment Milestones",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "numbered",
+      "items": [
+        "Provision virtual private cloud and subnets with strict route tables",
+        "Configure security groups and ingress access control policies",
+        "Deploy database clusters with multi-AZ failover replication",
+        "Initialize Redis caching layer with automated sharding support",
+        "Bootstrap backend microservices and verify health endpoints",
+        "Switch DNS traffic via global latency-based routing policies"
+      ]
+    }
+  ]
+}

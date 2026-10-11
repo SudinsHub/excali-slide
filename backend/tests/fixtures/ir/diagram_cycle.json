@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "slide_key": "s13",
+  "layout": "diagram",
+  "title": "Continuous Delivery Lifecycle",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "cycle",
+      "caption": "DevOps Loop",
+      "nodes": [
+        {
+          "id": "plan",
+          "label": "Plan",
+          "shape": "rounded",
+          "emphasis": "primary"
+        },
+        {
+          "id": "code",
+          "label": "Code",
+          "shape": "rounded",
+          "emphasis": "normal"
+        },
+        {
+          "id": "build",
+          "label": "Build",
+          "shape": "rounded",
+          "emphasis": "accent"
+        },
+        {
+          "id": "test",
+          "label": "Test",
+          "shape": "rounded",
+          "emphasis": "positive"
+        },
+        {
+          "id": "deploy",
+          "label": "Deploy",
+          "shape": "rounded",
+          "emphasis": "negative"
+        }
+      ],
+      "edges": []
+    }
+  ]
+}

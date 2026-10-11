@@ -27,3 +27,31 @@
 - Optimistic locking for slide drafts uses `if_rev: int`. Writers send their expected revision number and receive HTTP 409 `draft_conflict` on revision mismatch.
 - Checkpoints on clean slides reject with HTTP 409 `nothing_to_commit`.
 - Restoring a version creates a new immutable version with `origin="restore"` and increments sequence numbers; version history never rewinds.
+
+## Pass 2: IR Schemas & Compiler Implementation Decisions
+
+### 5. Hand-Drawn Font Metrics Calibration
+- Excalidraw's primary font (`Virgil`) was calibrated via `/dev/calibrate` across 20 representative technical strings and sizes (24, 28, 36, 64px):
+  - Mean character advance ratio: `0.58 * font_size` (e.g. ~16.24px at 28px font).
+  - Safety margin: Conservative padding ensures no text clip when rendered in canvas.
+  - Line height: `1.25 * font_size`.
+  - Greedy wrap (`wrap_text`) preserves explicit line breaks while fitting labels into calculated container widths.
+
+### 6. Sublabel Font Size vs Minimum Font Quality Gate
+- SPEC §7 allowed sublabel font size 22px, but Quality Gate rule (d) strictly forbids any font `< 24px` (`font_too_small` error).
+- Decision: Set sublabels, captions, and group title headers to a minimum of 24px (`MUTED` color palette for visual hierarchy). This ensures clean quality gate compliance without visual compromise.
+
+### 7. Overlay & Container Collisions
+- Sibling bounding-box collision detection in `quality.py` checks all element pairs.
+- Group backgrounds (`grp_`) and edge label pill backgrounds (`el_bg_`) intentionally wrap or sit beneath nodes and arrows.
+- Decision: Exclude group containers and edge label backgrounds from direct node-to-node collision checks to eliminate false positives while preserving strict collision rejection for actual node rects.
+
+### 8. Mindmap Aspect Ratio Adaptation
+- The standard slide content area is 16:9 widescreen (`1680 × 760 px`). Purely circular mindmaps with large radial spacing easily overflow the vertical 760px bound.
+- Decision: Implemented elliptical radial distribution with `rx = 340px, ry = 220px` for level 1, and `rx = 580px, ry = 300px` for grandchildren, keeping nodes fully inside frame safe boundaries.
+
+### 9. Fully Dockerized Execution
+- User constraint: All services, test runners, compilers, and frontends must run within Docker.
+- Backend container includes Graphviz `dot 2.42.4`, Python 3.12, UV, and Hypothesis.
+- Frontend container runs Vite HMR on port 5173 and supports in-container testing (`npm test`) and building (`npm run build`).
+

@@ -1,0 +1,234 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "grp_hdr_canary",
+        "n_c1",
+        "n_c2",
+        "grp_hdr_bluegreen",
+        "n_bg1",
+        "n_bg2",
+        "grp_hdr_rolling",
+        "n_r1",
+        "n_r2"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Deployment Strategy Comparison",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Deployment Strategy Comparison",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 64.0,
+      "id": "grp_hdr_canary",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "Canary Release"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 120.0,
+      "y": 429.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 141,
+      "id": "n_c1",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Low Risk Exposure"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 120.0,
+      "y": 513.0
+    },
+    {
+      "backgroundColor": "#f1f3f5",
+      "fillStyle": "solid",
+      "height": 141,
+      "id": "n_c2",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#495057",
+        "text": "Requires Traffic Splitter"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#868e96",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 120.0,
+      "y": 670.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 64.0,
+      "id": "grp_hdr_bluegreen",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "Blue-Green"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 693.3,
+      "y": 429.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 141,
+      "id": "n_bg1",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Instant Rollback"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 693.3,
+      "y": 513.0
+    },
+    {
+      "backgroundColor": "#ffc9c9",
+      "fillStyle": "solid",
+      "height": 141,
+      "id": "n_bg2",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#e03131",
+        "text": "2x Infrastructure Cost"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#e03131",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 693.3,
+      "y": 670.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 64.0,
+      "id": "grp_hdr_rolling",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Rolling Update"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 1266.7,
+      "y": 429.0
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 141,
+      "id": "n_r1",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "Minimal Overhead"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 1266.7,
+      "y": 513.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 141,
+      "id": "n_r2",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "Mixed Version Window"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 533.3,
+      "x": 1266.7,
+      "y": 670.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

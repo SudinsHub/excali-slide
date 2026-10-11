@@ -193,4 +193,23 @@ export const api = {
     });
     return handleResponse<Deck>(res);
   },
+
+  // Dev compiler
+  async devCompile(ir: any, assetDims?: Record<string, [number, number]>): Promise<any> {
+    const res = await fetch(`${API_BASE}/dev/compile`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ir, asset_dims: assetDims || {} }),
+    });
+    return handleResponse<any>(res);
+  },
+
+  async devApplyIR(slideId: string, ir: any, assetDims?: Record<string, [number, number]>): Promise<any> {
+    const res = await fetch(`${API_BASE}/dev/slides/${slideId}/apply-ir`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ir, asset_dims: assetDims || {} }),
+    });
+    return handleResponse<any>(res);
+  },
 };

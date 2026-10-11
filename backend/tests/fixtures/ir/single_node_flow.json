@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "slide_key": "s17",
+  "layout": "diagram",
+  "title": "Single Service Node",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "solo",
+          "label": "Autonomous Agent",
+          "shape": "rounded",
+          "emphasis": "primary"
+        }
+      ],
+      "edges": []
+    }
+  ]
+}

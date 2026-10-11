@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "slide_key": "s25",
+  "layout": "image_text",
+  "title": "Panoramic Telemetry Dashboard",
+  "image_side": "right",
+  "blocks": [
+    {
+      "type": "image",
+      "asset_id": "wide_dashboard_asset",
+      "caption": "Realtime Global Operations"
+    },
+    {
+      "type": "text",
+      "style": "bullets",
+      "items": [
+        "Live traffic visualization across 24 edge nodes",
+        "Automated anomaly alerts integrated with PagerDuty"
+      ]
+    }
+  ]
+}

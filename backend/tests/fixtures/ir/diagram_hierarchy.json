@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "slide_key": "s11",
+  "layout": "diagram",
+  "title": "Organization Hierarchy",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "hierarchy",
+      "direction": "TB",
+      "nodes": [
+        {
+          "id": "ceo",
+          "label": "Chief Executive",
+          "shape": "rounded",
+          "emphasis": "primary"
+        },
+        {
+          "id": "vp_eng",
+          "label": "VP Engineering",
+          "shape": "rounded",
+          "emphasis": "accent"
+        },
+        {
+          "id": "vp_prod",
+          "label": "VP Product",
+          "shape": "rounded",
+          "emphasis": "accent"
+        },
+        {
+          "id": "lead_be",
+          "label": "Backend Team",
+          "shape": "rect",
+          "emphasis": "normal"
+        },
+        {
+          "id": "lead_fe",
+          "label": "Frontend Team",
+          "shape": "rect",
+          "emphasis": "normal"
+        }
+      ],
+      "edges": [
+        {
+          "source": "ceo",
+          "target": "vp_eng"
+        },
+        {
+          "source": "ceo",
+          "target": "vp_prod"
+        },
+        {
+          "source": "vp_eng",
+          "target": "lead_be"
+        },
+        {
+          "source": "vp_eng",
+          "target": "lead_fe"
+        }
+      ]
+    }
+  ]
+}

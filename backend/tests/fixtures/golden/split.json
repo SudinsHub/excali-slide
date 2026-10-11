@@ -1,0 +1,279 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "split_text_heading",
+        "split_t_i0",
+        "split_t_i1",
+        "split_t_i2",
+        "n_ingress",
+        "n_bus",
+        "n_sink",
+        "e_ingress_bus_0",
+        "el_bg_e_ingress_bus_0",
+        "el_txt_e_ingress_bus_0",
+        "e_bus_sink_1",
+        "el_bg_e_bus_sink_1",
+        "el_txt_e_bus_sink_1"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Event-Driven Processing",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Event-Driven Processing",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 38.0,
+      "height": 47.5,
+      "id": "split_text_heading",
+      "strokeColor": "#f08c00",
+      "text": "Workflow Overview",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 120.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 34.0,
+      "height": 85.0,
+      "id": "split_t_i0",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Incoming requests produce\naudit events",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 120.0,
+      "y": 317.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 34.0,
+      "height": 85.0,
+      "id": "split_t_i1",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Stream processor enriches\npayload",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 120.0,
+      "y": 422.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 34.0,
+      "height": 85.0,
+      "id": "split_t_i2",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Analytics engine ingests in\nreal-time",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 640.0,
+      "x": 120.0,
+      "y": 527.5
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_ingress",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "API Ingress"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 235,
+      "x": 929.5,
+      "y": 579.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_bus",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "Event Bus"
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 203,
+      "x": 1224.5,
+      "y": 579.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_sink",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Data Sink"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 203,
+      "x": 1487.5,
+      "y": 579.0
+    },
+    {
+      "end": {
+        "id": "n_bus"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_ingress_bus_0",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          279.0,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_ingress"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 279.0,
+      "x": 1047.0,
+      "y": 615.0
+    },
+    {
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "height": 38.0,
+      "id": "el_bg_e_ingress_bus_0",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "transparent",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 113.4,
+      "x": 1129.8,
+      "y": 596.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "el_txt_e_ingress_bus_0",
+      "strokeColor": "#1e1e1e",
+      "text": "publish",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 97.4,
+      "x": 1137.8,
+      "y": 600.0
+    },
+    {
+      "end": {
+        "id": "n_sink"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_bus_sink_1",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          263.0,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_bus"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 263.0,
+      "x": 1326.0,
+      "y": 615.0
+    },
+    {
+      "backgroundColor": "#ffffff",
+      "fillStyle": "solid",
+      "height": 38.0,
+      "id": "el_bg_e_bus_sink_1",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "transparent",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 113.4,
+      "x": 1400.8,
+      "y": 596.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "el_txt_e_bus_sink_1",
+      "strokeColor": "#1e1e1e",
+      "text": "consume",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 97.4,
+      "x": 1408.8,
+      "y": 600.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

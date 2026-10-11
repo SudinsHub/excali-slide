@@ -5,11 +5,15 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, status
 from PIL import Image, ImageDraw
+from pydantic import BaseModel, Field
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.compiler import CompileCtx, CompileResult, compile
 from app.config import settings
 from app.db import get_db
-from app.errors import BadRequestError
+from app.errors import BadRequestError, NotFoundError
+from app.ir.schemas import SlideIR
 from app.models.deck import Deck
 from app.models.slide import Slide
 from app.models.slide_version import SlideVersion
@@ -18,6 +22,84 @@ from app.services.assets import save_asset
 from app.services.storage import storage
 
 router = APIRouter(prefix="/dev", tags=["dev"])
+
+
+class DevCompileRequest(BaseModel):
+    ir: SlideIR
+    asset_dims: dict[str, tuple[int, int]] = Field(default_factory=dict)
+
+
+@router.post("/compile", response_model=CompileResult)
+async def dev_compile(req: DevCompileRequest) -> CompileResult:
+    if settings.ENV != "dev":
+        raise BadRequestError(
+            code="dev_only", message="Dev endpoints are only available in ENV=dev"
+        )
+    ctx = CompileCtx(asset_dims=req.asset_dims)
+    return compile(req.ir, ctx)
+
+
+@router.post("/slides/{slide_id}/apply-ir")
+async def dev_apply_ir(
+    slide_id: Path | str,
+    req: DevCompileRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    import uuid
+
+    if settings.ENV != "dev":
+        raise BadRequestError(
+            code="dev_only", message="Dev endpoints are only available in ENV=dev"
+        )
+
+    try:
+        slide_uuid = uuid.UUID(str(slide_id))
+    except ValueError:
+        raise BadRequestError("invalid_uuid", f"Invalid slide ID '{slide_id}'") from None
+
+    stmt = select(Slide).where(Slide.id == slide_uuid, Slide.deleted_at.is_(None))
+    res = await db.execute(stmt)
+    slide = res.scalar_one_or_none()
+    if not slide:
+        raise NotFoundError("slide_not_found", f"Slide {slide_uuid} not found")
+
+    ctx = CompileCtx(asset_dims=req.asset_dims)
+    comp_res = compile(req.ir, ctx)
+    if comp_res.skeleton is None or comp_res.errors:
+        raise BadRequestError("compilation_failed", "; ".join(comp_res.errors))
+
+    seq_stmt = select(func.coalesce(func.max(SlideVersion.seq), 0)).where(
+        SlideVersion.slide_id == slide_uuid
+    )
+    max_seq = (await db.execute(seq_stmt)).scalar_one()
+
+    new_version = SlideVersion(
+        slide_id=slide_uuid,
+        seq=max_seq + 1,
+        origin="manual",
+        summary=req.ir.title or "Applied IR from Dev Compiler",
+        ir=req.ir.model_dump(),
+        skeleton=comp_res.skeleton,
+        scene=None,
+        warnings=comp_res.warnings,
+    )
+    db.add(new_version)
+    await db.flush()
+
+    slide.current_version_id = new_version.id
+    slide.draft_scene = None
+    slide.draft_hash = None
+    slide.status = "ready"
+    await db.commit()
+
+    return {
+        "status": "ok",
+        "slide_id": str(slide.id),
+        "version_id": str(new_version.id),
+        "warnings": comp_res.warnings,
+        "stats": comp_res.stats.model_dump(),
+    }
+
 
 
 def _generate_sample_png() -> bytes:

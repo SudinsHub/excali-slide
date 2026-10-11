@@ -1,0 +1,340 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "n_root",
+        "n_rel",
+        "e_root_rel",
+        "n_rel_ha",
+        "e_rel_rel_ha",
+        "n_sec",
+        "e_root_sec",
+        "n_sec_auth",
+        "e_sec_sec_auth",
+        "n_perf",
+        "e_root_perf",
+        "n_perf_lat",
+        "e_perf_perf_lat"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Software Quality Attributes",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Software Quality Attributes",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 94,
+      "id": "n_root",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "System Quality"
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "ellipse",
+      "width": 369,
+      "x": 775.5,
+      "y": 573.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_rel",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "Reliability"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 235,
+      "x": 662.5,
+      "y": 428.1
+    },
+    {
+      "end": {
+        "id": "n_rel"
+      },
+      "height": -155.9,
+      "id": "e_root_rel",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -180.0,
+          -155.9
+        ]
+      ],
+      "start": {
+        "id": "n_root"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -180.0,
+      "x": 960.0,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "#f1f3f5",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_rel_ha",
+      "label": {
+        "fontSize": 24.0,
+        "strokeColor": "#495057",
+        "text": "High Availability"
+      },
+      "strokeColor": "#868e96",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 293,
+      "x": 483.5,
+      "y": 315.5
+    },
+    {
+      "end": {
+        "id": "n_rel_ha"
+      },
+      "height": -112.6,
+      "id": "e_rel_rel_ha",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -150.0,
+          -112.6
+        ]
+      ],
+      "start": {
+        "id": "n_rel"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -150.0,
+      "x": 780.0,
+      "y": 464.1
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_sec",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Security"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 186,
+      "x": 1227.0,
+      "y": 584.0
+    },
+    {
+      "end": {
+        "id": "n_sec"
+      },
+      "height": 0.0,
+      "id": "e_root_sec",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          360.0,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_root"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 360.0,
+      "x": 960.0,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "#f1f3f5",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_sec_auth",
+      "label": {
+        "fontSize": 24.0,
+        "strokeColor": "#495057",
+        "text": "Zero Trust"
+      },
+      "strokeColor": "#868e96",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 196,
+      "x": 1522.0,
+      "y": 584.0
+    },
+    {
+      "end": {
+        "id": "n_sec_auth"
+      },
+      "height": -0.0,
+      "id": "e_sec_sec_auth",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          300.0,
+          -0.0
+        ]
+      ],
+      "start": {
+        "id": "n_sec"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 300.0,
+      "x": 1320.0,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_perf",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "Performance"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 235,
+      "x": 662.5,
+      "y": 739.9
+    },
+    {
+      "end": {
+        "id": "n_perf"
+      },
+      "height": 155.9,
+      "id": "e_root_perf",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -180.0,
+          155.9
+        ]
+      ],
+      "start": {
+        "id": "n_root"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -180.0,
+      "x": 960.0,
+      "y": 620.0
+    },
+    {
+      "backgroundColor": "#f1f3f5",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_perf_lat",
+      "label": {
+        "fontSize": 24.0,
+        "strokeColor": "#495057",
+        "text": "Low Latency"
+      },
+      "strokeColor": "#868e96",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 210,
+      "x": 525.0,
+      "y": 852.5
+    },
+    {
+      "end": {
+        "id": "n_perf_lat"
+      },
+      "height": 112.6,
+      "id": "e_perf_perf_lat",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -150.0,
+          112.6
+        ]
+      ],
+      "start": {
+        "id": "n_perf"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -150.0,
+      "x": 780.0,
+      "y": 775.9
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

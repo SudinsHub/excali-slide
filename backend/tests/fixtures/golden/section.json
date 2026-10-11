@@ -1,0 +1,50 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "section_marker",
+        "title"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Part 1: Foundational Infrastructure",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 28.0,
+      "id": "section_marker",
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 3,
+      "type": "ellipse",
+      "width": 28.0,
+      "x": 140.0,
+      "y": 452.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 96.0,
+      "height": 240.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Part 1: Foundational\nInfrastructure",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 1480.0,
+      "x": 200.0,
+      "y": 420.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

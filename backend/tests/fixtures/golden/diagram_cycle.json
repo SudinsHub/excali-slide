@@ -1,0 +1,301 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "n_plan",
+        "n_code",
+        "n_build",
+        "n_test",
+        "n_deploy",
+        "e_plan_code",
+        "e_code_build",
+        "e_build_test",
+        "e_test_deploy",
+        "e_deploy_plan",
+        "cycle_caption"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Continuous Delivery Lifecycle",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Continuous Delivery Lifecycle",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_plan",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "Plan"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 160,
+      "x": 880.0,
+      "y": 364.0
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_code",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "Code"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 160,
+      "x": 1089.2,
+      "y": 516.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_build",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "Build"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 160,
+      "x": 1009.3,
+      "y": 762.0
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_test",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Test"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 160,
+      "x": 750.7,
+      "y": 762.0
+    },
+    {
+      "backgroundColor": "#ffc9c9",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_deploy",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#e03131",
+        "text": "Deploy"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#e03131",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 160,
+      "x": 670.8,
+      "y": 516.0
+    },
+    {
+      "end": {
+        "id": "n_code"
+      },
+      "endArrowhead": "arrow",
+      "height": 152.0,
+      "id": "e_plan_code",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          209.2,
+          152.0
+        ]
+      ],
+      "start": {
+        "id": "n_plan"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 209.2,
+      "x": 960.0,
+      "y": 400.0
+    },
+    {
+      "end": {
+        "id": "n_build"
+      },
+      "endArrowhead": "arrow",
+      "height": 246.0,
+      "id": "e_code_build",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -79.9,
+          246.0
+        ]
+      ],
+      "start": {
+        "id": "n_code"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -79.9,
+      "x": 1169.2,
+      "y": 552.0
+    },
+    {
+      "end": {
+        "id": "n_test"
+      },
+      "endArrowhead": "arrow",
+      "height": 0.0,
+      "id": "e_build_test",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -258.6,
+          0.0
+        ]
+      ],
+      "start": {
+        "id": "n_build"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -258.6,
+      "x": 1089.3,
+      "y": 798.0
+    },
+    {
+      "end": {
+        "id": "n_deploy"
+      },
+      "endArrowhead": "arrow",
+      "height": -246.0,
+      "id": "e_test_deploy",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -79.9,
+          -246.0
+        ]
+      ],
+      "start": {
+        "id": "n_test"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -79.9,
+      "x": 830.7,
+      "y": 798.0
+    },
+    {
+      "end": {
+        "id": "n_plan"
+      },
+      "endArrowhead": "arrow",
+      "height": -152.0,
+      "id": "e_deploy_plan",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          209.2,
+          -152.0
+        ]
+      ],
+      "start": {
+        "id": "n_deploy"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 209.2,
+      "x": 750.8,
+      "y": 552.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "cycle_caption",
+      "strokeColor": "#868e96",
+      "text": "DevOps Loop",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "middle",
+      "width": 153.1,
+      "x": 883.4,
+      "y": 605.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

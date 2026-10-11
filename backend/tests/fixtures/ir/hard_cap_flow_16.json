@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "slide_key": "s20",
+  "layout": "diagram",
+  "title": "16-Node Maximum Capacity Flow",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "LR",
+      "nodes": [
+        { "id": "n0", "label": "Ingest A", "shape": "rounded", "emphasis": "normal" },
+        { "id": "n1", "label": "Ingest B", "shape": "rounded", "emphasis": "normal" },
+        { "id": "n2", "label": "Ingest C", "shape": "rounded", "emphasis": "normal" },
+        { "id": "n3", "label": "Ingest D", "shape": "rounded", "emphasis": "normal" },
+        { "id": "n4", "label": "Parser A", "shape": "rounded", "emphasis": "primary" },
+        { "id": "n5", "label": "Parser B", "shape": "rounded", "emphasis": "primary" },
+        { "id": "n6", "label": "Parser C", "shape": "rounded", "emphasis": "primary" },
+        { "id": "n7", "label": "Parser D", "shape": "rounded", "emphasis": "primary" },
+        { "id": "n8", "label": "Router A", "shape": "rounded", "emphasis": "accent" },
+        { "id": "n9", "label": "Router B", "shape": "rounded", "emphasis": "accent" },
+        { "id": "n10", "label": "Router C", "shape": "rounded", "emphasis": "accent" },
+        { "id": "n11", "label": "Router D", "shape": "rounded", "emphasis": "accent" },
+        { "id": "n12", "label": "Sink A", "shape": "rounded", "emphasis": "positive" },
+        { "id": "n13", "label": "Sink B", "shape": "rounded", "emphasis": "positive" },
+        { "id": "n14", "label": "Sink C", "shape": "rounded", "emphasis": "positive" },
+        { "id": "n15", "label": "Sink D", "shape": "rounded", "emphasis": "positive" }
+      ],
+      "edges": [
+        { "source": "n0", "target": "n4" },
+        { "source": "n1", "target": "n5" },
+        { "source": "n2", "target": "n6" },
+        { "source": "n3", "target": "n7" },
+        { "source": "n4", "target": "n8" },
+        { "source": "n5", "target": "n9" },
+        { "source": "n6", "target": "n10" },
+        { "source": "n7", "target": "n11" },
+        { "source": "n8", "target": "n12" },
+        { "source": "n9", "target": "n13" },
+        { "source": "n10", "target": "n14" },
+        { "source": "n11", "target": "n15" }
+      ]
+    }
+  ]
+}

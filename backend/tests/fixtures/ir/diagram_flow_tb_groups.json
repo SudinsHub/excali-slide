@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "slide_key": "s10",
+  "layout": "diagram",
+  "title": "Tiered Security Architecture",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "flow",
+      "direction": "TB",
+      "groups": [
+        {
+          "id": "dmz",
+          "label": "Public DMZ"
+        },
+        {
+          "id": "internal",
+          "label": "Private Network"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "waf",
+          "label": "Cloud WAF",
+          "shape": "rounded",
+          "emphasis": "primary",
+          "group_id": "dmz"
+        },
+        {
+          "id": "gateway",
+          "label": "API Gateway",
+          "shape": "rounded",
+          "emphasis": "accent",
+          "group_id": "dmz"
+        },
+        {
+          "id": "auth",
+          "label": "OAuth Server",
+          "shape": "rounded",
+          "emphasis": "normal",
+          "group_id": "internal"
+        },
+        {
+          "id": "service",
+          "label": "Core Engine",
+          "shape": "rounded",
+          "emphasis": "positive",
+          "group_id": "internal"
+        }
+      ],
+      "edges": [
+        {
+          "source": "waf",
+          "target": "gateway"
+        },
+        {
+          "source": "gateway",
+          "target": "auth"
+        },
+        {
+          "source": "gateway",
+          "target": "service"
+        }
+      ]
+    }
+  ]
+}

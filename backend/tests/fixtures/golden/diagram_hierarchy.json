@@ -1,0 +1,248 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "n_ceo",
+        "n_vp_eng",
+        "n_vp_prod",
+        "n_lead_be",
+        "n_lead_fe",
+        "e_ceo_vp_eng_0",
+        "e_ceo_vp_prod_1",
+        "e_vp_eng_lead_be_2",
+        "e_vp_eng_lead_fe_3"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Organization Hierarchy",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Organization Hierarchy",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 106,
+      "id": "n_ceo",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "Chief\nExecutive"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 203,
+      "x": 941.5,
+      "y": 435.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_vp_eng",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "VP Engineering"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 284,
+      "x": 755.0,
+      "y": 601.0
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_vp_prod",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "VP Product"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 219,
+      "x": 1079.5,
+      "y": 601.0
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_lead_be",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "Backend Team"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 251,
+      "x": 621.5,
+      "y": 733.0
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_lead_fe",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "Frontend Team"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 268,
+      "x": 913.0,
+      "y": 733.0
+    },
+    {
+      "end": {
+        "id": "n_vp_eng"
+      },
+      "height": 149.0,
+      "id": "e_ceo_vp_eng_0",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -146.0,
+          149.0
+        ]
+      ],
+      "start": {
+        "id": "n_ceo"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -146.0,
+      "x": 1043.0,
+      "y": 488.0
+    },
+    {
+      "end": {
+        "id": "n_vp_prod"
+      },
+      "height": 149.0,
+      "id": "e_ceo_vp_prod_1",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          146.0,
+          149.0
+        ]
+      ],
+      "start": {
+        "id": "n_ceo"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 146.0,
+      "x": 1043.0,
+      "y": 488.0
+    },
+    {
+      "end": {
+        "id": "n_lead_be"
+      },
+      "height": 132.0,
+      "id": "e_vp_eng_lead_be_2",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -150.0,
+          132.0
+        ]
+      ],
+      "start": {
+        "id": "n_vp_eng"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -150.0,
+      "x": 897.0,
+      "y": 637.0
+    },
+    {
+      "end": {
+        "id": "n_lead_fe"
+      },
+      "height": 132.0,
+      "id": "e_vp_eng_lead_fe_3",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          150.0,
+          132.0
+        ]
+      ],
+      "start": {
+        "id": "n_vp_eng"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 150.0,
+      "x": 897.0,
+      "y": 637.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

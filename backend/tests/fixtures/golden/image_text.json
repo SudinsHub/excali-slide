@@ -1,0 +1,108 @@
+{
+  "asset_ids": [
+    "asset_sample_chart_1"
+  ],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "img_element",
+        "img_caption",
+        "it_i0",
+        "it_i1",
+        "it_i2"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "User Experience Benchmark",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "User Experience Benchmark",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "fileId": "asset_sample_chart_1",
+      "height": 585.0,
+      "id": "img_element",
+      "type": "image",
+      "width": 780.0,
+      "x": 120.0,
+      "y": 277.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "img_caption",
+      "strokeColor": "#868e96",
+      "text": "Quarterly Latency Distribution (p99)",
+      "textAlign": "center",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 780.0,
+      "x": 120.0,
+      "y": 876.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 36.0,
+      "height": 90.0,
+      "id": "it_i0",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Sub-100ms response times maintained\nacross regions",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 840.0,
+      "x": 960.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 36.0,
+      "height": 90.0,
+      "id": "it_i1",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Zero dropped transactions during\ntraffic spikes",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 840.0,
+      "x": 960.0,
+      "y": 364.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 36.0,
+      "height": 90.0,
+      "id": "it_i2",
+      "strokeColor": "#1e1e1e",
+      "text": "\u2022  Linear caching efficiency achieved\nvia edge proxies",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 840.0,
+      "x": 960.0,
+      "y": 478.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "slide_key": "s15",
+  "layout": "diagram",
+  "title": "Deployment Strategy Comparison",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "comparison",
+      "groups": [
+        {
+          "id": "canary",
+          "label": "Canary Release"
+        },
+        {
+          "id": "bluegreen",
+          "label": "Blue-Green"
+        },
+        {
+          "id": "rolling",
+          "label": "Rolling Update"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "c1",
+          "label": "Low Risk Exposure",
+          "group_id": "canary",
+          "emphasis": "positive"
+        },
+        {
+          "id": "c2",
+          "label": "Requires Traffic Splitter",
+          "group_id": "canary",
+          "emphasis": "muted"
+        },
+        {
+          "id": "bg1",
+          "label": "Instant Rollback",
+          "group_id": "bluegreen",
+          "emphasis": "positive"
+        },
+        {
+          "id": "bg2",
+          "label": "2x Infrastructure Cost",
+          "group_id": "bluegreen",
+          "emphasis": "negative"
+        },
+        {
+          "id": "r1",
+          "label": "Minimal Overhead",
+          "group_id": "rolling",
+          "emphasis": "normal"
+        },
+        {
+          "id": "r2",
+          "label": "Mixed Version Window",
+          "group_id": "rolling",
+          "emphasis": "accent"
+        }
+      ],
+      "edges": []
+    }
+  ]
+}

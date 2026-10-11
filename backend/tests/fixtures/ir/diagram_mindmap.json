@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "slide_key": "s16",
+  "layout": "diagram",
+  "title": "Software Quality Attributes",
+  "blocks": [
+    {
+      "type": "diagram",
+      "kind": "mindmap",
+      "nodes": [
+        {
+          "id": "root",
+          "label": "System Quality",
+          "shape": "ellipse",
+          "emphasis": "primary"
+        },
+        {
+          "id": "rel",
+          "label": "Reliability",
+          "shape": "rounded",
+          "emphasis": "accent"
+        },
+        {
+          "id": "sec",
+          "label": "Security",
+          "shape": "rounded",
+          "emphasis": "positive"
+        },
+        {
+          "id": "perf",
+          "label": "Performance",
+          "shape": "rounded",
+          "emphasis": "normal"
+        },
+        {
+          "id": "rel_ha",
+          "label": "High Availability",
+          "shape": "rect",
+          "emphasis": "muted"
+        },
+        {
+          "id": "sec_auth",
+          "label": "Zero Trust",
+          "shape": "rect",
+          "emphasis": "muted"
+        },
+        {
+          "id": "perf_lat",
+          "label": "Low Latency",
+          "shape": "rect",
+          "emphasis": "muted"
+        }
+      ],
+      "edges": [
+        {
+          "source": "root",
+          "target": "rel"
+        },
+        {
+          "source": "root",
+          "target": "sec"
+        },
+        {
+          "source": "root",
+          "target": "perf"
+        },
+        {
+          "source": "rel",
+          "target": "rel_ha"
+        },
+        {
+          "source": "sec",
+          "target": "sec_auth"
+        },
+        {
+          "source": "perf",
+          "target": "perf_lat"
+        }
+      ]
+    }
+  ]
+}

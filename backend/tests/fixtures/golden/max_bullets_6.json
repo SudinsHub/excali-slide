@@ -1,0 +1,126 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "b0_i0",
+        "b0_i1",
+        "b0_i2",
+        "b0_i3",
+        "b0_i4",
+        "b0_i5"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Key Deployment Milestones",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Key Deployment Milestones",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 100.0,
+      "id": "b0_i0",
+      "strokeColor": "#1e1e1e",
+      "text": "1.  Provision virtual private cloud and subnets with strict route\ntables",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1508.0,
+      "x": 140.0,
+      "y": 250.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i1",
+      "strokeColor": "#1e1e1e",
+      "text": "2.  Configure security groups and ingress access control policies",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1508.0,
+      "x": 140.0,
+      "y": 378.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i2",
+      "strokeColor": "#1e1e1e",
+      "text": "3.  Deploy database clusters with multi-AZ failover replication",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1461.6,
+      "x": 140.0,
+      "y": 456.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i3",
+      "strokeColor": "#1e1e1e",
+      "text": "4.  Initialize Redis caching layer with automated sharding support",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1531.2,
+      "x": 140.0,
+      "y": 534.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i4",
+      "strokeColor": "#1e1e1e",
+      "text": "5.  Bootstrap backend microservices and verify health endpoints",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1461.6,
+      "x": 140.0,
+      "y": 612.0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 40.0,
+      "height": 50.0,
+      "id": "b0_i5",
+      "strokeColor": "#1e1e1e",
+      "text": "6.  Switch DNS traffic via global latency-based routing policies",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1484.8,
+      "x": 140.0,
+      "y": 690.0
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

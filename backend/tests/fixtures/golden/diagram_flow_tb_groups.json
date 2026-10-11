@@ -1,0 +1,272 @@
+{
+  "asset_ids": [],
+  "elements": [
+    {
+      "children": [
+        "title",
+        "grp_dmz",
+        "grp_label_dmz",
+        "grp_internal",
+        "grp_label_internal",
+        "n_waf",
+        "n_gateway",
+        "n_auth",
+        "n_service",
+        "e_waf_gateway_0",
+        "e_gateway_auth_1",
+        "e_gateway_service_2"
+      ],
+      "height": 1080,
+      "id": "slide-frame",
+      "name": "Tiered Security Architecture",
+      "type": "frame",
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 64.0,
+      "height": 80.0,
+      "id": "title",
+      "strokeColor": "#1e1e1e",
+      "text": "Tiered Security Architecture",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 1680.0,
+      "x": 120.0,
+      "y": 90.0
+    },
+    {
+      "backgroundColor": "#f8f9fa",
+      "fillStyle": "solid",
+      "height": 251.0,
+      "id": "grp_dmz",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#adb5bd",
+      "strokeStyle": "dashed",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 260.0,
+      "x": 826.0,
+      "y": 428.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "grp_label_dmz",
+      "strokeColor": "#495057",
+      "text": "Public DMZ",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 236.0,
+      "x": 838.0,
+      "y": 434.5
+    },
+    {
+      "backgroundColor": "#f8f9fa",
+      "fillStyle": "solid",
+      "height": 119.0,
+      "id": "grp_internal",
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#adb5bd",
+      "strokeStyle": "dashed",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 550.0,
+      "x": 685.0,
+      "y": 692.5
+    },
+    {
+      "fontFamily": 1,
+      "fontSize": 24.0,
+      "height": 30.0,
+      "id": "grp_label_internal",
+      "strokeColor": "#495057",
+      "text": "Private Network",
+      "textAlign": "left",
+      "type": "text",
+      "verticalAlign": "top",
+      "width": 526.0,
+      "x": 697.0,
+      "y": 698.5
+    },
+    {
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_waf",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1971c2",
+        "text": "Cloud WAF"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1971c2",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 203,
+      "x": 854.5,
+      "y": 463.5
+    },
+    {
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_gateway",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#f08c00",
+        "text": "API Gateway"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#f08c00",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 235,
+      "x": 838.5,
+      "y": 595.5
+    },
+    {
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_auth",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#1e1e1e",
+        "text": "OAuth Server"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 251,
+      "x": 972.5,
+      "y": 727.5
+    },
+    {
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "height": 72,
+      "id": "n_service",
+      "label": {
+        "fontSize": 28.0,
+        "strokeColor": "#2f9e44",
+        "text": "Core Engine"
+      },
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#2f9e44",
+      "strokeStyle": "solid",
+      "strokeWidth": 2,
+      "type": "rectangle",
+      "width": 235,
+      "x": 697.5,
+      "y": 727.5
+    },
+    {
+      "end": {
+        "id": "n_gateway"
+      },
+      "endArrowhead": "arrow",
+      "height": 132.0,
+      "id": "e_waf_gateway_0",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.0,
+          132.0
+        ]
+      ],
+      "start": {
+        "id": "n_waf"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 0.0,
+      "x": 956.0,
+      "y": 499.5
+    },
+    {
+      "end": {
+        "id": "n_auth"
+      },
+      "endArrowhead": "arrow",
+      "height": 132.0,
+      "id": "e_gateway_auth_1",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          142.0,
+          132.0
+        ]
+      ],
+      "start": {
+        "id": "n_gateway"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": 142.0,
+      "x": 956.0,
+      "y": 631.5
+    },
+    {
+      "end": {
+        "id": "n_service"
+      },
+      "endArrowhead": "arrow",
+      "height": 132.0,
+      "id": "e_gateway_service_2",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -141.0,
+          132.0
+        ]
+      ],
+      "start": {
+        "id": "n_gateway"
+      },
+      "strokeColor": "#1e1e1e",
+      "strokeStyle": "solid",
+      "type": "arrow",
+      "width": -141.0,
+      "x": 956.0,
+      "y": 631.5
+    }
+  ],
+  "frame": {
+    "height": 1080,
+    "width": 1920
+  },
+  "version": 1
+}

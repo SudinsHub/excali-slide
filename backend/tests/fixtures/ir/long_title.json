@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "slide_key": "s22",
+  "layout": "text",
+  "title": "A Detailed Investigation Into Enterprise Cloud Resilience Standards",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "bullets",
+      "items": [
+        "Guaranteed recovery point objectives under 30 seconds",
+        "Redundant geo-distributed data plane routing"
+      ]
+    }
+  ]
+}

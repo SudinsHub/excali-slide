@@ -23,7 +23,7 @@ const UI_OPTIONS = {
     export: false,
     saveAsImage: false,
   },
-};
+} as const;
 
 interface Props {
   slide: SlideDetail;

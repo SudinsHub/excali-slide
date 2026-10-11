@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "slide_key": "s8",
+  "layout": "closing",
+  "title": "Thank You",
+  "subtitle": "Questions & Discussion",
+  "blocks": [
+    {
+      "type": "text",
+      "style": "bullets",
+      "items": [
+        "Docs: https://github.com/excali-slide",
+        "Contact: team@excalislide.dev"
+      ]
+    }
+  ]
+}
